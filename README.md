@@ -65,11 +65,3 @@
 
 
 
-
-
-
-### Database structure
-  #### Table relationships:
-  ![Database_structure](https://user-images.githubusercontent.com/73591672/236622989-ae5acf5b-dc85-4ae9-8f5c-efb1f93b10e7.jpg)
-
-
