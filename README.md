@@ -1,5 +1,5 @@
 # Books_Library 📚
- It is a database for storing books
+ It is a website for storing books
 * [Manual](#manual)
   * [Database structure](#database-structure)
     * [Table relationships](#table-relationships)
