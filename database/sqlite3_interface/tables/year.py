@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_year import data_year
 from .query_for_tables.query_year import query_create, query_insert, query_select_all, query_select_id_by_year

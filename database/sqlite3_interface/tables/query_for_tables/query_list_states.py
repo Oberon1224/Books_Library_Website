@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 #Запрос создания таблицы list_states
 query_create = """
     CREATE TABLE IF NOT EXISTS list_states

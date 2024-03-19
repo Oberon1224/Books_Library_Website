@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_about = [
     ['Информация 1', 1],
     ['Информация 2', 2],

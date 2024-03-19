@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_list_tags = [
     [1, 1],
     [1, 2],

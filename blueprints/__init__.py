@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .style import*
 from .change_state import*
 from .select_books import*

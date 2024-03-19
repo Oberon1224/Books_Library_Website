@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .sqlite3_interface.create_db import CreateDataBase
 from .sqlite3_interface.tables.about import About
 from .sqlite3_interface.tables.author import Author

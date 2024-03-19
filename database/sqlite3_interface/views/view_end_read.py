@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .view import View
 from .query_for_views.query_view_end_read import query_create, query_select_all, query_select_for_user
 

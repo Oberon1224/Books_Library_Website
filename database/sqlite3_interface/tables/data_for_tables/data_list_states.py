@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_list_states = [
     [25, 1, 1, 1],
     [133, 1, 2, 2],

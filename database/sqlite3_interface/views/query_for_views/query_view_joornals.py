@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 query_create = """
     CREATE VIEW IF NOT EXISTS joornals_category AS 
     SELECT  book.id_book, book.title, book.path_book, book.path_image,

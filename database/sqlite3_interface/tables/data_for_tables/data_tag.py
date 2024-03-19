@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_tag = [
     ['C++'],
     ['C'],

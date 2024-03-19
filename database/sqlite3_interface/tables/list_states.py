@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_list_states import data_list_states
 from .query_for_tables.query_list_states import query_create, query_insert, query_select_all, query_select_state_page, query_select_user_books

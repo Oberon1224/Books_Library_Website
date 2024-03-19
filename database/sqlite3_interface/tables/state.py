@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_state import data_state
 from .query_for_tables.query_state import query_create, query_insert

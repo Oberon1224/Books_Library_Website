@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_category import data_category
 from .query_for_tables.query_category import query_create, query_insert, query_select_all, query_select_id_by_category

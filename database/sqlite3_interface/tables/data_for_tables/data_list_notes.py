@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_list_notes = [
     [1, 1, 1],
     [2, 1, 1],

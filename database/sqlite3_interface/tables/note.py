@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_note import data_note
 from .query_for_tables.query_note import query_create, query_insert, query_select_all

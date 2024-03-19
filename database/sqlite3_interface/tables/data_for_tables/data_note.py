@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_note = [
     ['Заметка 1'],
     ['Заметка 2'],

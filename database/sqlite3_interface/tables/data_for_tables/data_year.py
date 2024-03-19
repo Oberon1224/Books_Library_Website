@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_year = [
     ['1990'],
     ['1991'],

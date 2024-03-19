@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_list_authors import data_list_authors
 from .query_for_tables.query_list_authors import query_create, query_insert, query_select_all, query_select_on_id_book_and_author

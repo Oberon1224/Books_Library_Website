@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_book = [
     ['Название кн 1', 11,'/static/books/1.pdf', '/static/images/test/1.jpg', 1, 1, 1, 1],
     ['Название кн 2', 22 ,'/static/books/2.pdf', '/static/images/test/2.jpg', 2, 2, 2, 1],

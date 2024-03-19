@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .table import Table
 from .data_for_tables.data_book import data_book
 from .query_for_tables.query_book import query_create, query_last_row, query_insert

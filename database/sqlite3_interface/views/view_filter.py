@@ -1,3 +1,6 @@
+#Copyright 2024 Bushuev Dmitrii
+
+
 from .view import View
 from .query_for_views.query_view_filter import query_create, query_select_for_filter_all
 from .query_for_views.query_view_filter import query_select_for_filter_tag_year, query_select_for_filter_tag_language

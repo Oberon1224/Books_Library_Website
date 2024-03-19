@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from flask import Blueprint, render_template, current_app, request
 
 search_filter = Blueprint('search_filter', __name__, template_folder = 'templates')

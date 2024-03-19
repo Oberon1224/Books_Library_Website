@@ -1,3 +1,4 @@
+#Copyright 2024 Bushuev Dmitrii
 from flask import Flask, request, render_template, abort, Response, session,redirect, json
 import database as db
 from blueprints import*

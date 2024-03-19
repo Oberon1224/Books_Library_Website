@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .about import About
 from .author import Author
 from .book import Book

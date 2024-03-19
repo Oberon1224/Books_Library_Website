@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .view_articles import ViewArticles
 from .view_books import ViewBooks
 from .view_end_read import ViewEndRead

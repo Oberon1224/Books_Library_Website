@@ -1,3 +1,4 @@
+#Copyright 2024 Bushuev Dmitrii
 from settings import*
 import sys
 import database as db

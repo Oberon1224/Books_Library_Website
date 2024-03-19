@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from .tables import*
 from .views import*
 class CreateDataBase:

@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from abc import ABC, abstractmethod
 import sqlite3
 

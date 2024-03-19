@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 import re
 from flask import request
 

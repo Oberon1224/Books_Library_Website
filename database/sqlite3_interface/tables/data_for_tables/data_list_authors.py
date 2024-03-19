@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 data_list_authors =[
     [1, 1],
     [2, 2],

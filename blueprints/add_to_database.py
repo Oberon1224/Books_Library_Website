@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from flask import Blueprint, render_template, current_app, request
 from .function import formation_authors, formation_tags, parser_html_ajax, parser_list_in_list
 

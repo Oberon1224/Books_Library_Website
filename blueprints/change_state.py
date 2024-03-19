@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from flask import Blueprint, current_app
 from .function import check_book_on_user
 

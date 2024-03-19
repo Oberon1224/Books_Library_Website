@@ -1,3 +1,5 @@
+#Copyright 2024 Bushuev Dmitrii
+
 from flask import Blueprint, current_app
 
 style = Blueprint('style', __name__, template_folder = 'templates')
