@@ -1,0 +1,190 @@
+/**
+* Контейнер книги
+*/
+.book_window_class{
+    position: relative; 
+    top: -585px;
+    left: 375px; 
+    width: 1150px;
+}
+
+
+/** 
+* Документ книги
+*/
+.frame_book_class{
+    width: 1150px;
+    height: 720px;
+}
+
+
+/**
+* Контейнер меню открытой книги
+*/
+.menu_book_read{
+    position: relative; 
+    top: -770px; 
+    left: 0px
+}
+
+
+/** 
+* Класс меню кнопок открытой книги
+*/
+.book_button_open{
+    position:static;
+	width: 180px;
+	height: 44px;
+	font-family: Inter;
+	font-size: 22px;
+	line-height: 34px;
+}
+
+
+/** 
+* Контейнер закладки
+*/
+.container_marker{
+    position: relative;
+    visibility: hidden;
+}
+
+
+/** 
+* Поле ввода страницы закладки
+*/
+.input_marker{
+    width: 80px;
+	height: 44px;
+	font-size: 22px;
+}
+
+
+/** 
+* Кнопка изменения страницы закладки
+*/
+.btn_marker{
+    left: 80px;
+    width: 180px;
+	height: 44px;
+	font-family: Inter;
+	font-size: 22px;
+	line-height: 34px;
+}
+
+
+/** 
+* Контейнер заметок
+*/
+.container_notes{
+    position: absolute;
+    width: 1150px;
+    height: 600px;
+    top: 50px;
+    background-color: rgb(22, 22, 22);
+    visibility: hidden;
+}
+
+
+/** 
+* Контейнер таблицы
+*/
+.container_table{
+	overflow-y: scroll;
+    position: absolute;
+    width: 1100px; 
+    height: 300px; 
+    left: 25px;
+}
+
+
+/** 
+* Таблица заметок
+*/
+.table_notes{
+    width: 1080px;
+    height: auto;
+    background-color: rgb(22, 22, 22);
+    color: rgb(255, 255, 255);
+    font-size: 26px;
+    word-break: break-all;
+    position: relative;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Класс линии границ таблицы
+*/
+.border_tables{
+    border: 3px;
+    border-color: black;
+    border-style:groove;
+}
+
+
+/** 
+* Класс ячейки id
+*/
+.id_note{
+    width: 50px;
+    height: 20px;
+}
+
+
+/** 
+* Класс ячейки заметки
+*/
+.name_note{
+    height: 20px;
+    white-space: pre-wrap;
+}
+
+
+/** 
+* Класс записи таблицы заметок
+*/
+.row_table{
+    height: 20px;
+}
+
+
+/** 
+* Контейнер добавления заметок
+*/
+.add_notes{
+    position: absolute;
+    width: 1090px;
+    height: 210px;
+    top: 320px;
+    left: 25px;
+    background-color: rgb(213, 213, 229);
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+}
+
+
+/**
+* Кнопка Добавить заметку
+*/
+.btn_add_note{
+    width: 200px;
+	height: 44px;
+    font-size: 22px;
+    position: absolute;
+    top: 225px;
+    left:900px;
+}
+
+
+/**
+* Поле ввода заметки
+*/
+.field_note{
+    position: relative;
+    top: -20px;
+    width: 1100px;
+    height: 220px;
+    font-size: 26px;
+}
+

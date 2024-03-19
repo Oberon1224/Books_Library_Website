@@ -1,0 +1,173 @@
+<head>
+
+    <!--javascript файлы-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/libs/jquery.js') }}"></script> <!-- библиотека jquery -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/main_scripts.js') }}"></script> <!--скрипты для оснвоного окна -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/shift_style.js') }}"></script> <!--скрипты для изменения стиля сайта-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/add_file.js') }}"></script> <!--скрипты для добавления информации в базу данных-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/filter_scripts.js') }}"></script> <!--скрипты для выбора книг по фильтру-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/open_book.js') }}"></script> <!--скрипты для открытия и чтения книги-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/change_state.js') }}"></script> <!--скрипты для изменения статуса книги-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts/change_file.js') }}"></script> <!--скрипты для изменения информации о книге-->
+
+    <!--css файлы-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main_book.css') }}"> <!-- дизайн основного окна -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_menu.css') }}"> <!-- дизайн  меню пользователя -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/book_container.css') }}"> <!-- дизайн контейнера книги -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/open_book.css') }}"> <!-- дизайн страницы чтения книги -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/add_file.css') }}"> <!-- дизайн страницы добавления книги -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/filter_window.css') }}"> <!-- дизайн окна фильтра  -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/change_file.css') }}"> <!-- дизайн страницы изменения информации книги -->
+
+</head> 
+
+
+<!--главный контейнер-->
+<body class="main_window_library" >
+
+    <!--кнопка показать панель меню-->
+    <input type="submit" id = "button_show_id" class = "button_show_class low_button " value="Показать"> 
+
+    <!--кнопка скрыть панель меню-->
+    <input type="submit" id = "button_hide_id" class = "button_hide_class low_button " value="Скрыть"> 
+
+    
+    <!--кнопка 1-->
+    <form method="post" action="/main">
+        <input type="submit" id = "menu_button1" class = "menu_button " value="Главная"> 
+    </form>
+
+    <!--кнопка 2-->
+    <form action="/{{login}}/joornal/page/1">
+        <input type="submit" id = "menu_button2" class = "menu_button " value="Журналы"> 
+    </form>
+
+    <!--кнопка 3-->
+    <form action="/{{login}}/books/page/1">
+        <input type="submit" id = "menu_button3" class = "menu_button " value="Книги"> 
+    </form>
+  
+    <!--кнопка 4-->
+    <form action="/{{login}}/article/page/1">
+        <input type="submit" id = "menu_button4" class = "menu_button " value="Статьи"> 
+    </form>
+
+    <!--кнопка 5-->
+    <form action="/{{login}}/add">
+    <input type="submit" id = "menu_button5" class = "menu_button " value="Добавить"> 
+    </form>
+
+    <!--меню пользователя (user_menu)-->
+    <div  class = "user_menu" >
+        <div class="user_icon_name" >
+            <img class="image_user" src="{{url_for('static',filename='images/user.jpg')}}">
+            <p class="user_menu_button">{{login}}</p>
+            <form method="post" action ="/{{login}}/on_reading/page/1">
+            <input type="submit"  class="button_user_menu button_user_menu_position1" value="На чтении">
+            </form>
+
+            <form method="post" action ="/{{login}}/favorites/page/1">
+            <input type="submit"  class="button_user_menu button_user_menu_position2" value="Избранное">   
+            </form>
+
+            <form method="post" action ="/{{login}}/end_read/page/1">
+            <input type="submit"  class="button_user_menu button_user_menu_position3" value="Прочитанное"> 
+            </form>
+
+            <form method="post" action ="/exit">
+            <input type="submit"  class="button_user_menu button_user_menu_position4" value="Выйти"> 
+            </form>
+
+        </div>
+    </div>
+
+    <form id="form_filter" method="post" action ="/{{login}}/filter/page/1">
+    <!--Окно фильтра поиска-->
+    <div id="filter_main_window" class="filter_window" style="display: inline-flex;">
+        <div>
+            <!--Блок фильтра выбора тэгов-->
+            <div сlass="container_choise_filter">
+                <!--Раскрывающийся список выбора тэгов-->
+                <select name="tag" id="select_tag_filter_id" class="select_filter">
+                    <option disabled selected>Выберите тэг</option>
+                    <option>Все</option>
+                    <!--@param i[1] - название тэга-->
+                    <!--@function  tags.select_all() - выборка всех записей из таблицы tag-->  
+                    {% if tags.select_all() != None %}
+                        {% for i in tags.select_all() %}
+                            <option>{{i[1]}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+        </div>
+
+
+
+
+        <!--Блок фильтра выбора языка-->
+        <div class="container_choise_filter">
+            <div class="container_tags_filter" style="display: inline-flexbox;">
+                <!--Раскрывающийся список выбора языка книг-->
+                <select name="language" id="select_language_filter_id" class="select_filter">
+                    <option disabled selected>Выберите языки книг</option>
+                    <option>Все</option>
+                    <!--@param i[1] - название языка-->
+                    <!--@function  language.select_all() - выборка всех записей из таблицы language-->  
+                    {% if language.select_all() != None %}
+                        {% for i in language.select_all() %}
+                            <option>{{i[1]}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>  
+        </div>
+
+        <!--Блок фильтра выбора года издания-->
+        <div class="container_choise_filter">
+            <div class="container_tags_filter" style="display: inline-flexbox;">
+                <!--Раскрывающийся список выбора года издания-->
+                <select name="year" id="select_year_filter_id" class="select_filter">
+                    <option disabled selected>Выберите год издания</option>
+                    <option>Все</option>
+                    <!--@param i[1] - год издания книги-->
+                    <!--@function  year.select_all() - выборка всех записей из таблицы year-->  
+                    {% if year.select_all() != None %}
+                        {% for i in year.select_all() %}
+                            <option>{{i[1]}}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+
+            <!--Кнопка применения фильтра -->
+                <input type="submit" id="enter_window_filter" class="low_button button_filter" value="Применить">
+        </div>
+        <br>  
+        
+    </div>
+</form>
+    <!--Кнопка Фильтр-->
+    <input type="submit" id = "button_filter_id" class="button_filter_class low_button" value="Фильтр"> 
+
+    <!--кнопки изменения стиля-->
+    <form method="post">
+    <input type="submit"  id ="button_style_main" class ="button_style button_style_visibility_main low_button" value="Стиль">
+    <input type="submit"  id ="button_style1" class ="button_style button_style_position1" value="">
+    <input type="submit"  id ="button_style2" class ="button_style button_style_position2" value=""> 
+    <input type="submit"  id ="button_style3" class ="button_style button_style_position3" value="">
+    <input type="submit"  id ="button_style4" class ="button_style button_style_position4" value="">
+    <input type="submit"  id ="button_style5" class ="button_style button_style_position5" value="">
+    </form>
+
+    <script>filter('{{login}}', '1')</script>
+    <form method="post" action ="/{{login}}/search/page/1">
+    <!--поле ввода поиск-->
+    <input type="text" name="search_input_field" id="search_input_id" class="search_input_class" >
+
+    <!--кнопка поиск-->
+    <input type="submit" id="button_search_id" class="button_search_class low_button" value="Найти">
+    </form>
+
+    
+</body>

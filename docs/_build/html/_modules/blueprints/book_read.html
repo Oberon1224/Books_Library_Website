@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blueprints.book_read &#8212; документация Книжная библиотека 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    
+    <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=29b1f277"></script>
+    
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">документация Книжная библиотека 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Код модуля</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blueprints.book_read</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Исходный код blueprints.book_read</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">.function</span> <span class="kn">import</span> <span class="n">check_book_on_user</span>
+
+<span class="n">book_read</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;book_read&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=</span><span class="s1">&#39;templates&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="open_book">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.book_read.open_book">[документация]</a>
+<span class="nd">@book_read</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;login&gt;/open/&lt;id_book&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">open_book</span><span class="p">(</span><span class="n">login</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">id_book</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">render_template</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Переход на страницу открытия книги</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        login (string): Имя пользователя</span>
+<span class="sd">        id_book (int): id книги</span>
+
+<span class="sd">    Результаты выполнения условий:</span>
+<span class="sd">        :if check_book_on_user: выполняется запрос update для таблицы list_states \n</span>
+<span class="sd">        :else: выполняется запрос insert для таблицы list_states</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :render_template: Страница html</span>
+
+<span class="sd">    Возвращаемые html страницы:</span>
+<span class="sd">        :open_book.html: Возвращает страницу чтения книги \n</span>
+<span class="sd">        :index.html: Возвращает страницу авторизации если сессия работы с библиотекой прервана \n</span>
+
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">check_book_on_user</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LIST_STATES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_user_books</span><span class="p">(</span><span class="n">login</span><span class="p">),</span> <span class="n">id_book</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Книга с ID = </span><span class="si">{</span><span class="n">id_book</span><span class="si">}</span><span class="s1"> имеется у пользователя с логином </span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LIST_STATES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">id_book</span><span class="p">,</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">login</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Книга  с ID = </span><span class="si">{</span><span class="n">id_book</span><span class="si">}</span><span class="s1"> отсутствует у пользователя с логином </span><span class="si">{</span><span class="n">login</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LIST_STATES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert_get_data</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">id_book</span><span class="p">,</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">login</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;open_book.html&#39;</span><span class="p">,</span> <span class="n">login</span><span class="o">=</span><span class="n">login</span><span class="p">,</span> <span class="n">id_book</span> <span class="o">=</span> <span class="n">id_book</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                               <span class="n">book</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;BOOK&#39;</span><span class="p">],</span> <span class="n">list_states</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LIST_STATES&#39;</span><span class="p">],</span>
+                               <span class="n">notes</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;NOTE&#39;</span><span class="p">],</span> <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> 
+                               <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span> 
+                               <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Завершение сессии работы с библиотекой&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span>  </div>
+
+
+<div class="viewcode-block" id="change_page_marker">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.book_read.change_page_marker">[документация]</a>
+<span class="nd">@book_read</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/change_page_marker&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">change_page_marker</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Запрос изменения страницы закладки</span>
+
+<span class="sd">    Переменные:</span>
+<span class="sd">        :new_page (str): Новая страница закладки \n</span>
+<span class="sd">        :id_book (int): id книги \n</span>
+<span class="sd">        :id_user (int): id пользователя</span>
+
+<span class="sd">    Результаты выполнения условий:</span>
+<span class="sd">        :if id_book and id_user and new_page: выполняется запрос update для таблицы list_states \n</span>
+<span class="sd">        :else: ничего не выполняется</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :str: Возвращает пустую строку</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="n">new_page</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;new_page&#39;</span><span class="p">)</span>
+    <span class="n">id_book</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_book&#39;</span><span class="p">)</span>
+    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">id_book</span> <span class="ow">and</span> <span class="n">id_user</span> <span class="ow">and</span> <span class="n">new_page</span><span class="p">:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LIST_STATES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update_state_page</span><span class="p">(</span><span class="n">new_page</span><span class="p">,</span> <span class="n">id_book</span><span class="p">,</span> <span class="n">id_user</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Страница-закладка книги с id = </span><span class="si">{</span><span class="n">id_book</span><span class="si">}</span><span class="s1"> для пользователя с id = </span><span class="si">{</span><span class="n">id_user</span><span class="si">}</span><span class="s1"> изменена на </span><span class="si">{</span><span class="n">new_page</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Новая страница, id книги или id пользователя со значением null!&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;None&#39;</span></div>
+
+
+<div class="viewcode-block" id="add_note">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.book_read.add_note">[документация]</a>
+<span class="nd">@book_read</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/add_note&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">add_note</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Запрос добавления заметки</span>
+
+<span class="sd">    Переменные:</span>
+<span class="sd">        :text_note (str): Новая заметка \n</span>
+<span class="sd">        :id_book (int): id книги \n</span>
+<span class="sd">        :id_user (int): id пользователя</span>
+
+<span class="sd">    Результаты выполнения условий:</span>
+<span class="sd">        :if id_last_note and id_book and id_user: добавляется новая заметка для книги \n</span>
+<span class="sd">        :else: ничего не выполняется, одна из переменных со значением null</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :str: Возвращает пустую строку</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="n">text_note</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;text_note&#39;</span><span class="p">)</span>
+    <span class="n">id_book</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id_book&#39;</span><span class="p">)</span>
+    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">text_note</span><span class="p">:</span>
+        <span class="n">id_last_note</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;NOTE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_last_row</span><span class="p">()</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;NOTE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert_get_data</span><span class="p">(</span><span class="n">text_note</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">id_last_note</span> <span class="ow">and</span> <span class="n">id_book</span> <span class="ow">and</span> <span class="n">id_user</span><span class="p">:</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LIST_NOTES&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">insert_get_data</span><span class="p">(</span><span class="n">id_last_note</span><span class="p">,</span> <span class="n">id_book</span><span class="p">,</span> <span class="n">id_user</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Заметка с id = </span><span class="si">{</span><span class="n">id_last_note</span><span class="si">}</span><span class="s1"> для книги (id = </span><span class="si">{</span><span class="n">id_book</span><span class="si">}</span><span class="s1"> для пользователя (id = </span><span class="si">{</span><span class="n">id_user</span><span class="si">}</span><span class="s1">)) добавлена!&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ID книги, заметки или пользователя со значением null!&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Текст заметки со значением null!&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;None&#39;</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">документация Книжная библиотека 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Код модуля</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blueprints.book_read</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Авторские права 2024, Бушуев Дмитрий.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

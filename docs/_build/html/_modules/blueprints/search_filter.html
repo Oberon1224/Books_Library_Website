@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blueprints.search_filter &#8212; документация Книжная библиотека 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    
+    <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=29b1f277"></script>
+    
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">документация Книжная библиотека 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Код модуля</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blueprints.search_filter</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Исходный код blueprints.search_filter</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">current_app</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">search_filter</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;search_filter&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">template_folder</span> <span class="o">=</span> <span class="s1">&#39;templates&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="search">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.search_filter.search">[документация]</a>
+<span class="nd">@search_filter</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;login&gt;/search/page/&lt;int:page&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">login</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">render_template</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция возвращает все найденные книжные издания</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        login (string): Имя пользователя</span>
+<span class="sd">        page (int): Страница</span>
+<span class="sd">        </span>
+<span class="sd">    Параметры для render_template:</span>
+<span class="sd">        :books (ViewSearch): Модель представления базы данных search \n</span>
+<span class="sd">        :page (int): Страница на которой находится пользователь (по умолчанию 1) \n</span>
+<span class="sd">        :login (str): Логин пользователя \n</span>
+<span class="sd">        :style (str): Стиль приложения \n</span>
+<span class="sd">        :tags (Tag): Модель таблицы базы данных tag \n</span>
+<span class="sd">        :authors (str): Модель таблицы базы данных authors \n</span>
+<span class="sd">        :language (Language): Модель таблицы базы данных language \n</span>
+<span class="sd">        :year (Year): Модель таблицы базы данных year \n  </span>
+<span class="sd">        :category (str): Категория книг, необходимая для формирования перехода между страницами \n</span>
+<span class="sd">        :state (State): Модель таблицы базы данных state \n</span>
+<span class="sd">        :id_user (int): id пользователя</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        :render_template: Страница html</span>
+
+<span class="sd">    Возвращаемые html страницы:</span>
+<span class="sd">        :books.html: Возвращает страницу с книгами если сессия работы с библиотекой  не завершена \n</span>
+<span class="sd">        :main.html: Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом \n</span>
+<span class="sd">        :index.html: Возвращает страницу авторизации если сессия работы с библиотекой прервана \n</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SEARCH_TITLE&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SEARCH_TITLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;search_input_field&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_SEARCH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_on_title</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SEARCH_TITLE&#39;</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_SEARCH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_on_title</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SEARCH_TITLE&#39;</span><span class="p">]</span> <span class="p">)),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>      
+        <span class="k">else</span><span class="p">:</span>
+             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Книги c похожим названием отсутствуют отсутствуют&#39;</span><span class="p">)</span>
+             <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;main.html&#39;</span><span class="p">,</span> <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> 
+                                    <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">])</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Завершение сессии работы с библиотекой&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span> </div>
+
+    
+<div class="viewcode-block" id="filter">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.search_filter.filter">[документация]</a>
+<span class="nd">@search_filter</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;login&gt;/filter/page/&lt;int:page&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">login</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">render_template</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция возвращает все найденные книжные издания по фильтру</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        login (string): Имя пользователя</span>
+<span class="sd">        page (int): Страница</span>
+<span class="sd">        </span>
+<span class="sd">    Переменные:</span>
+<span class="sd">        :year (int): Заданный год</span>
+<span class="sd">        :tag (str): Заданный тэг</span>
+<span class="sd">        :language (str): Заданный язык</span>
+
+<span class="sd">    Параметры для render_template:</span>
+<span class="sd">        :books (ViewFilter): Модель представления базы данных filter \n</span>
+<span class="sd">        :page (int): Страница на которой находится пользователь (по умолчанию 1) \n</span>
+<span class="sd">        :login (str): Логин пользователя \n</span>
+<span class="sd">        :style (str): Стиль приложения \n</span>
+<span class="sd">        :tags (Tag): Модель таблицы базы данных tag \n</span>
+<span class="sd">        :authors (str): Модель таблицы базы данных authors \n</span>
+<span class="sd">        :language (Language): Модель таблицы базы данных language \n</span>
+<span class="sd">        :year (Year): Модель таблицы базы данных year \n  </span>
+<span class="sd">        :category (str): Категория книг, необходимая для формирования перехода между страницами \n</span>
+<span class="sd">        :state (State): Модель таблицы базы данных state \n</span>
+<span class="sd">        :id_user (int): id пользователя</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        :render_template: Страница html</span>
+
+<span class="sd">    Возвращаемые html страницы:</span>
+<span class="sd">        :books.html : Возвращает страницу с книгами если сессия работы с библиотекой  не завершена \n</span>
+<span class="sd">        :main.html: Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом \n</span>
+<span class="sd">        :index.html: Возвращает страницу авторизации если сессия работы с библиотекой прервана \n</span>
+<span class="sd">    </span>
+<span class="sd">    Результаты выполнения условий подоготовки фильтра (аналогично для двух других блоков условий):</span>
+<span class="sd">        :if page == 1: FILTER_YEAR, FILTER_LANGUAGE и FILTER_TAG сбрасываются</span>
+<span class="sd">        :if [&#39;FILTER_YEAR&#39;] == None: Присвоение переменной значения</span>
+<span class="sd">        :elif (&#39;year&#39;) and (&#39;year&#39;) ! = [&#39;FILTER_YEAR&#39;]:  Присвоение переменной значения</span>
+
+<span class="sd">    Результаты выполнения условий фильтра:</span>
+<span class="sd">        :if year and language and tag: Возвращает страницу с книгами по трем критериям (год, язык и тэг) \n</span>
+<span class="sd">        :elif tag and year: Возвращает страницу с книгами по двум критериям (тэг и год) \n</span>
+<span class="sd">        :elif tag and language: Возвращает страницу с книгами по двум критериям (тэг и язык) \n</span>
+<span class="sd">        :elif language and year: Возвращает страницу с книгами по двум критериям (язык и год) \n</span>
+<span class="sd">        :elif tag: Возвращает страницу с книгами по одному критерию (тэг) \n</span>
+<span class="sd">        :elif language: Возвращает страницу с книгами по одному критерию (язык) \n</span>
+<span class="sd">        :elif year: Возвращает страницу с книгами по одному критерию (год) \n</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">page</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        
+    <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>  <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)</span>  <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">)</span>  <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]:</span>
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tag&#39;</span><span class="p">)</span>
+
+    <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span>
+    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span>
+
+    
+
+    <span class="k">if</span> <span class="n">year</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Выберите год издания&#39;</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">):</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> 
+            <span class="k">if</span> <span class="n">year</span> <span class="o">!=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]:</span>
+                <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> 
+        <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span> 
+
+
+    <span class="k">if</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]:</span>
+        <span class="c1">#выбраны все критерии</span>
+        <span class="k">if</span> <span class="n">year</span> <span class="ow">and</span> <span class="n">language</span> <span class="ow">and</span> <span class="n">tag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_all</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">year</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">language</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>      
+        <span class="c1">#выбран тэг и год</span>
+        <span class="k">elif</span> <span class="n">tag</span> <span class="ow">and</span> <span class="n">year</span><span class="p">:</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_tag_year</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span>  <span class="n">year</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  
+        <span class="c1">#выбран тэг и язык+</span>
+        <span class="k">elif</span> <span class="n">tag</span> <span class="ow">and</span> <span class="n">language</span><span class="p">:</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_tag_language</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">language</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  
+        <span class="c1">#выбран язык и год+</span>
+        <span class="k">elif</span> <span class="n">language</span> <span class="ow">and</span> <span class="n">year</span><span class="p">:</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_year_language</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">language</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span>  <span class="n">year</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>  
+        <span class="c1">#выбран тэг+</span>
+        <span class="k">elif</span> <span class="n">tag</span><span class="p">:</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_LANGUAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_tag</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>          
+        <span class="c1">#выбран язык</span>
+        <span class="k">elif</span> <span class="n">language</span><span class="p">:</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_TAG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;FILTER_YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_language</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="n">language</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>          
+        <span class="c1">#выбран год</span>
+        <span class="k">elif</span> <span class="n">year</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;books.html&#39;</span><span class="p">,</span><span class="n">books</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;VIEW_FILTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_for_filter_year</span><span class="p">(</span><span class="s1">&#39;%&#39;</span> <span class="o">+</span>  <span class="n">year</span>  <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">),</span> 
+                                    <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">authors</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">],</span>
+                                    <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">],</span>
+                                    <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;filter&#39;</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STATE&#39;</span><span class="p">],</span>
+                                    <span class="n">id_user</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">select_id_on_login</span><span class="p">(</span><span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;USER_LOGIN&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>          
+        <span class="k">else</span><span class="p">:</span>
+             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Книги c похожим названием отсутствуют отсутствуют&#39;</span><span class="p">)</span>
+             <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;main.html&#39;</span><span class="p">,</span> <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">,</span> <span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">style</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">],</span>
+                                    <span class="n">tags</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;TAG&#39;</span><span class="p">],</span> <span class="n">language</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">],</span> 
+                                    <span class="n">year</span> <span class="o">=</span> <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">])</span> 
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Завершение сессии работы с библиотекой&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">)</span> </div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">документация Книжная библиотека 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Код модуля</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blueprints.search_filter</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Авторские права 2024, Бушуев Дмитрий.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+/** 
+* Класс кнопки изменения информации о книге
+*/
+.change_btn{
+    font-size: 16px;
+    width: 90px;
+    height: 20px;
+    line-height: 14px;
+}
+
+
+/** 
+* Контейнер информации о книге
+*/
+.change_information{
+    height: 690px;
+}
+
+
+/** 
+* Кнопка изменить название книги
+*/
+#change_name_book{
+    position: absolute;
+    top:145px;
+    left: 220px;
+}
+
+
+/** 
+* Кнопка изменить количество страниц книги
+*/
+#change_page_book{
+    position: absolute;
+    top:232px;
+    left: 220px;
+}
+
+
+/** 
+* Кнопка изменить путь к файлу книги
+*/
+#change_path_book{
+    position: absolute;
+    top:315px;
+    left: 220px;
+}
+
+
+/** 
+* Кнопка изменить путь к изображению книги
+*/
+#change_path_image_book{
+    position: absolute;
+    top:405px;
+    left: 220px;
+}
+
+
+/** 
+* Кнопка изменить категорию книги
+*/
+#change_category_book{
+    position: absolute;
+    top:495px;
+    left: 220px;
+}
+
+
+/** 
+* Кнопка изменить язык книги
+*/
+#change_language_book{
+    position: absolute;
+    top:580px;
+    left: 220px;
+}
+
+
+/** 
+* Кнопка изменить год книги
+*/
+#change_year_book{
+    position: absolute;
+    top:665px;
+    left: 220px;
+}
+
+
+/**
+* Контейнер Авторы
+*/
+.change_author{
+    top:-700px;
+    height: 690px;
+    
+}
+
+
+/** 
+* Раскрывающий список авторов
+*/
+.combobox_change_list_authors{
+    top:-30px;
+}
+
+
+/** 
+* Кнопка Добавить автора в список
+*/
+.btn_change_list_authors{
+    top: 615px;
+}
+
+
+/** 
+* Кнопка Добавить авторов из списка
+*/
+#btn_add_list_authors{
+    position: absolute;
+    top: 515px;
+    left: 225px;
+}
+
+/** 
+* Тэги книги
+*/
+.change_tags{
+    top:-1415px;
+    height: 485px;
+}
+
+/** 
+* Кнопка Добавить тэг в список
+*/
+.change_btn_add_list_tag{
+    top: 425px;
+}
+
+/** 
+* Раскрывающий список выбора тэга
+*/
+.change_combobox_tags{
+    top: 50px;
+}
+
+/** 
+* Кнопка добавления списка тэгов
+*/
+#change_list_tags{
+    position: absolute;
+    top:340px;
+    left:225px;
+}
+
+/** 
+* Описание книги
+*/
+.change_description{
+    top:-1420px;
+    height: 185px;
+}
+
+/** 
+* Кнопка изменения описания книги
+*/
+#btn_change_description{
+    position: absolute;
+    left:220px;
+    top:150px;
+}

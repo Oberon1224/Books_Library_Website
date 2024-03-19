@@ -1,0 +1,31 @@
+<head>
+    <!--javascript файлы-->
+
+   <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script> <!--библиотека jquery-->
+
+    <!--css файлы-->
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index_book.css') }}"> <!-- дизайн страницы авторизации  -->
+   
+   <!--Главный контейнер страницы авторизации-->
+   <body class="window">
+    <form method="post" action="/main">
+        <p id="lable_login" class = "label_auth">Логин</p>
+
+        <!--Контейнер для поля ввода логина-->
+        <div id="login_input" class="input_lk">
+            <!--Поле ввода логина-->
+            <input name ="login_user" class="text_input" type="text">
+        </div>
+
+        <p id="label_password" class = "label_auth">Пароль</p>
+        <!--Контейнер для поля ввода пароля-->
+        <div id="password_input" class="input_lk">
+            <!--Поле ввода пароля-->
+            <input type ="password" name ="password_user" class="text_input" type="text">
+        </div>
+        
+        <!--Кнопка Войти-->
+        <input type="submit" id="button_in" value="Войти"> 
+    </form>
+      </body>
+</head> 

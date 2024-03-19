@@ -1,0 +1,197 @@
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.table@\spxentry{database.sqlite3\_interface.tables.table}|hyperpage}{5}
+\indexentry{database.sqlite3\_interface.tables.table@\spxentry{database.sqlite3\_interface.tables.table}!module@\spxentry{module}|hyperpage}{5}
+\indexentry{Table (класс в database.sqlite3\_interface.tables.table)@\spxentry{Table}\spxextra{класс в database.sqlite3\_interface.tables.table}|hyperpage}{5}
+\indexentry{close\_connect\_db() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{close\_connect\_db()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{5}
+\indexentry{connect\_db() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{connect\_db()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{create() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{create()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{get\_data\_to\_insert() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{get\_data\_to\_insert()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{get\_last\_row() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{get\_last\_row()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{insert() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{insert()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{insert\_data() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{insert\_data()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{select\_all() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{select\_all()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{update() (метод database.sqlite3\_interface.tables.table.Table)@\spxentry{update()}\spxextra{метод database.sqlite3\_interface.tables.table.Table}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.author@\spxentry{database.sqlite3\_interface.tables.author}|hyperpage}{6}
+\indexentry{database.sqlite3\_interface.tables.author@\spxentry{database.sqlite3\_interface.tables.author}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{Author (класс в database.sqlite3\_interface.tables.author)@\spxentry{Author}\spxextra{класс в database.sqlite3\_interface.tables.author}|hyperpage}{6}
+\indexentry{insert\_get\_data() (метод database.sqlite3\_interface.tables.author.Author)@\spxentry{insert\_get\_data()}\spxextra{метод database.sqlite3\_interface.tables.author.Author}|hyperpage}{7}
+\indexentry{select\_on\_full\_name() (метод database.sqlite3\_interface.tables.author.Author)@\spxentry{select\_on\_full\_name()}\spxextra{метод database.sqlite3\_interface.tables.author.Author}|hyperpage}{7}
+\indexentry{select\_on\_id\_book() (метод database.sqlite3\_interface.tables.author.Author)@\spxentry{select\_on\_id\_book()}\spxextra{метод database.sqlite3\_interface.tables.author.Author}|hyperpage}{8}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.book@\spxentry{database.sqlite3\_interface.tables.book}|hyperpage}{8}
+\indexentry{database.sqlite3\_interface.tables.book@\spxentry{database.sqlite3\_interface.tables.book}!module@\spxentry{module}|hyperpage}{8}
+\indexentry{Book (класс в database.sqlite3\_interface.tables.book)@\spxentry{Book}\spxextra{класс в database.sqlite3\_interface.tables.book}|hyperpage}{8}
+\indexentry{insert\_get\_data() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{insert\_get\_data()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{9}
+\indexentry{select\_on\_id\_book() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{select\_on\_id\_book()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{10}
+\indexentry{select\_path\_book() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{select\_path\_book()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{10}
+\indexentry{update\_id\_category() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_id\_category()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{10}
+\indexentry{update\_id\_language() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_id\_language()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{11}
+\indexentry{update\_id\_year() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_id\_year()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{11}
+\indexentry{update\_page() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_page()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{11}
+\indexentry{update\_path\_book() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_path\_book()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{11}
+\indexentry{update\_path\_image() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_path\_image()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{12}
+\indexentry{update\_title() (метод database.sqlite3\_interface.tables.book.Book)@\spxentry{update\_title()}\spxextra{метод database.sqlite3\_interface.tables.book.Book}|hyperpage}{12}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.category@\spxentry{database.sqlite3\_interface.tables.category}|hyperpage}{12}
+\indexentry{database.sqlite3\_interface.tables.category@\spxentry{database.sqlite3\_interface.tables.category}!module@\spxentry{module}|hyperpage}{12}
+\indexentry{Category (класс в database.sqlite3\_interface.tables.category)@\spxentry{Category}\spxextra{класс в database.sqlite3\_interface.tables.category}|hyperpage}{12}
+\indexentry{select\_id\_by\_category() (метод database.sqlite3\_interface.tables.category.Category)@\spxentry{select\_id\_by\_category()}\spxextra{метод database.sqlite3\_interface.tables.category.Category}|hyperpage}{13}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.language@\spxentry{database.sqlite3\_interface.tables.language}|hyperpage}{13}
+\indexentry{database.sqlite3\_interface.tables.language@\spxentry{database.sqlite3\_interface.tables.language}!module@\spxentry{module}|hyperpage}{13}
+\indexentry{Language (класс в database.sqlite3\_interface.tables.language)@\spxentry{Language}\spxextra{класс в database.sqlite3\_interface.tables.language}|hyperpage}{13}
+\indexentry{select\_id\_by\_language() (метод database.sqlite3\_interface.tables.language.Language)@\spxentry{select\_id\_by\_language()}\spxextra{метод database.sqlite3\_interface.tables.language.Language}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.list\_authors@\spxentry{database.sqlite3\_interface.tables.list\_authors}|hyperpage}{14}
+\indexentry{database.sqlite3\_interface.tables.list\_authors@\spxentry{database.sqlite3\_interface.tables.list\_authors}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{ListAuthors (класс в database.sqlite3\_interface.tables.list\_authors)@\spxentry{ListAuthors}\spxextra{класс в database.sqlite3\_interface.tables.list\_authors}|hyperpage}{14}
+\indexentry{insert\_get\_date() (метод database.sqlite3\_interface.tables.list\_authors.ListAuthors)@\spxentry{insert\_get\_date()}\spxextra{метод database.sqlite3\_interface.tables.list\_authors.ListAuthors}|hyperpage}{15}
+\indexentry{select\_on\_id\_book\_and\_author() (метод database.sqlite3\_interface.tables.list\_authors.ListAuthors)@\spxentry{select\_on\_id\_book\_and\_author()}\spxextra{метод database.sqlite3\_interface.tables.list\_authors.ListAuthors}|hyperpage}{15}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.list\_notes@\spxentry{database.sqlite3\_interface.tables.list\_notes}|hyperpage}{15}
+\indexentry{database.sqlite3\_interface.tables.list\_notes@\spxentry{database.sqlite3\_interface.tables.list\_notes}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{ListNotes (класс в database.sqlite3\_interface.tables.list\_notes)@\spxentry{ListNotes}\spxextra{класс в database.sqlite3\_interface.tables.list\_notes}|hyperpage}{15}
+\indexentry{insert\_get\_data() (метод database.sqlite3\_interface.tables.list\_notes.ListNotes)@\spxentry{insert\_get\_data()}\spxextra{метод database.sqlite3\_interface.tables.list\_notes.ListNotes}|hyperpage}{16}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.list\_states@\spxentry{database.sqlite3\_interface.tables.list\_states}|hyperpage}{16}
+\indexentry{database.sqlite3\_interface.tables.list\_states@\spxentry{database.sqlite3\_interface.tables.list\_states}!module@\spxentry{module}|hyperpage}{16}
+\indexentry{ListStates (класс в database.sqlite3\_interface.tables.list\_states)@\spxentry{ListStates}\spxextra{класс в database.sqlite3\_interface.tables.list\_states}|hyperpage}{16}
+\indexentry{insert\_get\_data() (метод database.sqlite3\_interface.tables.list\_states.ListStates)@\spxentry{insert\_get\_data()}\spxextra{метод database.sqlite3\_interface.tables.list\_states.ListStates}|hyperpage}{17}
+\indexentry{select\_state\_page() (метод database.sqlite3\_interface.tables.list\_states.ListStates)@\spxentry{select\_state\_page()}\spxextra{метод database.sqlite3\_interface.tables.list\_states.ListStates}|hyperpage}{17}
+\indexentry{select\_user\_books() (метод database.sqlite3\_interface.tables.list\_states.ListStates)@\spxentry{select\_user\_books()}\spxextra{метод database.sqlite3\_interface.tables.list\_states.ListStates}|hyperpage}{18}
+\indexentry{update\_state() (метод database.sqlite3\_interface.tables.list\_states.ListStates)@\spxentry{update\_state()}\spxextra{метод database.sqlite3\_interface.tables.list\_states.ListStates}|hyperpage}{18}
+\indexentry{update\_state\_page() (метод database.sqlite3\_interface.tables.list\_states.ListStates)@\spxentry{update\_state\_page()}\spxextra{метод database.sqlite3\_interface.tables.list\_states.ListStates}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.list\_tags@\spxentry{database.sqlite3\_interface.tables.list\_tags}|hyperpage}{19}
+\indexentry{database.sqlite3\_interface.tables.list\_tags@\spxentry{database.sqlite3\_interface.tables.list\_tags}!module@\spxentry{module}|hyperpage}{19}
+\indexentry{ListTags (класс в database.sqlite3\_interface.tables.list\_tags)@\spxentry{ListTags}\spxextra{класс в database.sqlite3\_interface.tables.list\_tags}|hyperpage}{19}
+\indexentry{insert\_get\_date() (метод database.sqlite3\_interface.tables.list\_tags.ListTags)@\spxentry{insert\_get\_date()}\spxextra{метод database.sqlite3\_interface.tables.list\_tags.ListTags}|hyperpage}{19}
+\indexentry{select\_on\_id\_book\_and\_tag() (метод database.sqlite3\_interface.tables.list\_tags.ListTags)@\spxentry{select\_on\_id\_book\_and\_tag()}\spxextra{метод database.sqlite3\_interface.tables.list\_tags.ListTags}|hyperpage}{19}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.note@\spxentry{database.sqlite3\_interface.tables.note}|hyperpage}{20}
+\indexentry{database.sqlite3\_interface.tables.note@\spxentry{database.sqlite3\_interface.tables.note}!module@\spxentry{module}|hyperpage}{20}
+\indexentry{Note (класс в database.sqlite3\_interface.tables.note)@\spxentry{Note}\spxextra{класс в database.sqlite3\_interface.tables.note}|hyperpage}{20}
+\indexentry{insert\_get\_data() (метод database.sqlite3\_interface.tables.note.Note)@\spxentry{insert\_get\_data()}\spxextra{метод database.sqlite3\_interface.tables.note.Note}|hyperpage}{21}
+\indexentry{select\_on\_id\_book() (метод database.sqlite3\_interface.tables.note.Note)@\spxentry{select\_on\_id\_book()}\spxextra{метод database.sqlite3\_interface.tables.note.Note}|hyperpage}{21}
+\indexentry{select\_on\_id\_user\_book() (метод database.sqlite3\_interface.tables.note.Note)@\spxentry{select\_on\_id\_user\_book()}\spxextra{метод database.sqlite3\_interface.tables.note.Note}|hyperpage}{21}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.state@\spxentry{database.sqlite3\_interface.tables.state}|hyperpage}{22}
+\indexentry{database.sqlite3\_interface.tables.state@\spxentry{database.sqlite3\_interface.tables.state}!module@\spxentry{module}|hyperpage}{22}
+\indexentry{State (класс в database.sqlite3\_interface.tables.state)@\spxentry{State}\spxextra{класс в database.sqlite3\_interface.tables.state}|hyperpage}{22}
+\indexentry{select\_state\_name() (метод database.sqlite3\_interface.tables.state.State)@\spxentry{select\_state\_name()}\spxextra{метод database.sqlite3\_interface.tables.state.State}|hyperpage}{22}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.tag@\spxentry{database.sqlite3\_interface.tables.tag}|hyperpage}{23}
+\indexentry{database.sqlite3\_interface.tables.tag@\spxentry{database.sqlite3\_interface.tables.tag}!module@\spxentry{module}|hyperpage}{23}
+\indexentry{Tag (класс в database.sqlite3\_interface.tables.tag)@\spxentry{Tag}\spxextra{класс в database.sqlite3\_interface.tables.tag}|hyperpage}{23}
+\indexentry{insert\_get\_data() (метод database.sqlite3\_interface.tables.tag.Tag)@\spxentry{insert\_get\_data()}\spxextra{метод database.sqlite3\_interface.tables.tag.Tag}|hyperpage}{23}
+\indexentry{select\_id\_on\_tag() (метод database.sqlite3\_interface.tables.tag.Tag)@\spxentry{select\_id\_on\_tag()}\spxextra{метод database.sqlite3\_interface.tables.tag.Tag}|hyperpage}{23}
+\indexentry{select\_on\_id\_book() (метод database.sqlite3\_interface.tables.tag.Tag)@\spxentry{select\_on\_id\_book()}\spxextra{метод database.sqlite3\_interface.tables.tag.Tag}|hyperpage}{24}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.user@\spxentry{database.sqlite3\_interface.tables.user}|hyperpage}{24}
+\indexentry{database.sqlite3\_interface.tables.user@\spxentry{database.sqlite3\_interface.tables.user}!module@\spxentry{module}|hyperpage}{24}
+\indexentry{User (класс в database.sqlite3\_interface.tables.user)@\spxentry{User}\spxextra{класс в database.sqlite3\_interface.tables.user}|hyperpage}{24}
+\indexentry{select\_id\_on\_login() (метод database.sqlite3\_interface.tables.user.User)@\spxentry{select\_id\_on\_login()}\spxextra{метод database.sqlite3\_interface.tables.user.User}|hyperpage}{25}
+\indexentry{select\_password\_on\_login() (метод database.sqlite3\_interface.tables.user.User)@\spxentry{select\_password\_on\_login()}\spxextra{метод database.sqlite3\_interface.tables.user.User}|hyperpage}{25}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.tables.year@\spxentry{database.sqlite3\_interface.tables.year}|hyperpage}{26}
+\indexentry{database.sqlite3\_interface.tables.year@\spxentry{database.sqlite3\_interface.tables.year}!module@\spxentry{module}|hyperpage}{26}
+\indexentry{Year (класс в database.sqlite3\_interface.tables.year)@\spxentry{Year}\spxextra{класс в database.sqlite3\_interface.tables.year}|hyperpage}{26}
+\indexentry{select\_id\_by\_year() (метод database.sqlite3\_interface.tables.year.Year)@\spxentry{select\_id\_by\_year()}\spxextra{метод database.sqlite3\_interface.tables.year.Year}|hyperpage}{26}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view@\spxentry{database.sqlite3\_interface.views.view}|hyperpage}{27}
+\indexentry{database.sqlite3\_interface.views.view@\spxentry{database.sqlite3\_interface.views.view}!module@\spxentry{module}|hyperpage}{27}
+\indexentry{View (класс в database.sqlite3\_interface.views.view)@\spxentry{View}\spxextra{класс в database.sqlite3\_interface.views.view}|hyperpage}{27}
+\indexentry{close\_connect\_db() (метод database.sqlite3\_interface.views.view.View)@\spxentry{close\_connect\_db()}\spxextra{метод database.sqlite3\_interface.views.view.View}|hyperpage}{27}
+\indexentry{connect\_db() (метод database.sqlite3\_interface.views.view.View)@\spxentry{connect\_db()}\spxextra{метод database.sqlite3\_interface.views.view.View}|hyperpage}{27}
+\indexentry{create() (метод database.sqlite3\_interface.views.view.View)@\spxentry{create()}\spxextra{метод database.sqlite3\_interface.views.view.View}|hyperpage}{27}
+\indexentry{select\_all() (метод database.sqlite3\_interface.views.view.View)@\spxentry{select\_all()}\spxextra{метод database.sqlite3\_interface.views.view.View}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_articles@\spxentry{database.sqlite3\_interface.views.view\_articles}|hyperpage}{27}
+\indexentry{database.sqlite3\_interface.views.view\_articles@\spxentry{database.sqlite3\_interface.views.view\_articles}!module@\spxentry{module}|hyperpage}{27}
+\indexentry{ViewArticles (класс в database.sqlite3\_interface.views.view\_articles)@\spxentry{ViewArticles}\spxextra{класс в database.sqlite3\_interface.views.view\_articles}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_books@\spxentry{database.sqlite3\_interface.views.view\_books}|hyperpage}{28}
+\indexentry{database.sqlite3\_interface.views.view\_books@\spxentry{database.sqlite3\_interface.views.view\_books}!module@\spxentry{module}|hyperpage}{28}
+\indexentry{ViewBooks (класс в database.sqlite3\_interface.views.view\_books)@\spxentry{ViewBooks}\spxextra{класс в database.sqlite3\_interface.views.view\_books}|hyperpage}{28}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_end\_read@\spxentry{database.sqlite3\_interface.views.view\_end\_read}|hyperpage}{29}
+\indexentry{database.sqlite3\_interface.views.view\_end\_read@\spxentry{database.sqlite3\_interface.views.view\_end\_read}!module@\spxentry{module}|hyperpage}{29}
+\indexentry{ViewEndRead (класс в database.sqlite3\_interface.views.view\_end\_read)@\spxentry{ViewEndRead}\spxextra{класс в database.sqlite3\_interface.views.view\_end\_read}|hyperpage}{29}
+\indexentry{select\_for\_user() (метод database.sqlite3\_interface.views.view\_end\_read.ViewEndRead)@\spxentry{select\_for\_user()}\spxextra{метод database.sqlite3\_interface.views.view\_end\_read.ViewEndRead}|hyperpage}{30}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_favorites@\spxentry{database.sqlite3\_interface.views.view\_favorites}|hyperpage}{30}
+\indexentry{database.sqlite3\_interface.views.view\_favorites@\spxentry{database.sqlite3\_interface.views.view\_favorites}!module@\spxentry{module}|hyperpage}{30}
+\indexentry{ViewFavorites (класс в database.sqlite3\_interface.views.view\_favorites)@\spxentry{ViewFavorites}\spxextra{класс в database.sqlite3\_interface.views.view\_favorites}|hyperpage}{30}
+\indexentry{select\_for\_user() (метод database.sqlite3\_interface.views.view\_favorites.ViewFavorites)@\spxentry{select\_for\_user()}\spxextra{метод database.sqlite3\_interface.views.view\_favorites.ViewFavorites}|hyperpage}{31}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_filter@\spxentry{database.sqlite3\_interface.views.view\_filter}|hyperpage}{31}
+\indexentry{database.sqlite3\_interface.views.view\_filter@\spxentry{database.sqlite3\_interface.views.view\_filter}!module@\spxentry{module}|hyperpage}{31}
+\indexentry{ViewFilter (класс в database.sqlite3\_interface.views.view\_filter)@\spxentry{ViewFilter}\spxextra{класс в database.sqlite3\_interface.views.view\_filter}|hyperpage}{31}
+\indexentry{select\_for\_filter\_all() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_all()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{32}
+\indexentry{select\_for\_filter\_language() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_language()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{32}
+\indexentry{select\_for\_filter\_tag() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_tag()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{32}
+\indexentry{select\_for\_filter\_tag\_language() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_tag\_language()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{33}
+\indexentry{select\_for\_filter\_tag\_year() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_tag\_year()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{33}
+\indexentry{select\_for\_filter\_year() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_year()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{33}
+\indexentry{select\_for\_filter\_year\_language() (метод database.sqlite3\_interface.views.view\_filter.ViewFilter)@\spxentry{select\_for\_filter\_year\_language()}\spxextra{метод database.sqlite3\_interface.views.view\_filter.ViewFilter}|hyperpage}{34}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_in\_read@\spxentry{database.sqlite3\_interface.views.view\_in\_read}|hyperpage}{34}
+\indexentry{database.sqlite3\_interface.views.view\_in\_read@\spxentry{database.sqlite3\_interface.views.view\_in\_read}!module@\spxentry{module}|hyperpage}{34}
+\indexentry{ViewInRead (класс в database.sqlite3\_interface.views.view\_in\_read)@\spxentry{ViewInRead}\spxextra{класс в database.sqlite3\_interface.views.view\_in\_read}|hyperpage}{34}
+\indexentry{select\_for\_user() (метод database.sqlite3\_interface.views.view\_in\_read.ViewInRead)@\spxentry{select\_for\_user()}\spxextra{метод database.sqlite3\_interface.views.view\_in\_read.ViewInRead}|hyperpage}{35}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_joornals@\spxentry{database.sqlite3\_interface.views.view\_joornals}|hyperpage}{35}
+\indexentry{database.sqlite3\_interface.views.view\_joornals@\spxentry{database.sqlite3\_interface.views.view\_joornals}!module@\spxentry{module}|hyperpage}{35}
+\indexentry{ViewJoornals (класс в database.sqlite3\_interface.views.view\_joornals)@\spxentry{ViewJoornals}\spxextra{класс в database.sqlite3\_interface.views.view\_joornals}|hyperpage}{35}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.views.view\_search@\spxentry{database.sqlite3\_interface.views.view\_search}|hyperpage}{36}
+\indexentry{database.sqlite3\_interface.views.view\_search@\spxentry{database.sqlite3\_interface.views.view\_search}!module@\spxentry{module}|hyperpage}{36}
+\indexentry{ViewSearch (класс в database.sqlite3\_interface.views.view\_search)@\spxentry{ViewSearch}\spxextra{класс в database.sqlite3\_interface.views.view\_search}|hyperpage}{36}
+\indexentry{select\_on\_title() (метод database.sqlite3\_interface.views.view\_search.ViewSearch)@\spxentry{select\_on\_title()}\spxextra{метод database.sqlite3\_interface.views.view\_search.ViewSearch}|hyperpage}{36}
+\indexentry{module@\spxentry{module}!database.sqlite3\_interface.create\_db@\spxentry{database.sqlite3\_interface.create\_db}|hyperpage}{37}
+\indexentry{database.sqlite3\_interface.create\_db@\spxentry{database.sqlite3\_interface.create\_db}!module@\spxentry{module}|hyperpage}{37}
+\indexentry{CreateDataBase (класс в database.sqlite3\_interface.create\_db)@\spxentry{CreateDataBase}\spxextra{класс в database.sqlite3\_interface.create\_db}|hyperpage}{37}
+\indexentry{create\_tables() (метод database.sqlite3\_interface.create\_db.CreateDataBase)@\spxentry{create\_tables()}\spxextra{метод database.sqlite3\_interface.create\_db.CreateDataBase}|hyperpage}{38}
+\indexentry{create\_views() (метод database.sqlite3\_interface.create\_db.CreateDataBase)@\spxentry{create\_views()}\spxextra{метод database.sqlite3\_interface.create\_db.CreateDataBase}|hyperpage}{38}
+\indexentry{insert\_data\_to\_db() (метод database.sqlite3\_interface.create\_db.CreateDataBase)@\spxentry{insert\_data\_to\_db()}\spxextra{метод database.sqlite3\_interface.create\_db.CreateDataBase}|hyperpage}{38}
+\indexentry{insert\_minimum\_data\_to\_db() (метод database.sqlite3\_interface.create\_db.CreateDataBase)@\spxentry{insert\_minimum\_data\_to\_db()}\spxextra{метод database.sqlite3\_interface.create\_db.CreateDataBase}|hyperpage}{38}
+\indexentry{module@\spxentry{module}!blueprints.add\_to\_database@\spxentry{blueprints.add\_to\_database}|hyperpage}{41}
+\indexentry{blueprints.add\_to\_database@\spxentry{blueprints.add\_to\_database}!module@\spxentry{module}|hyperpage}{41}
+\indexentry{add() (в модуле blueprints.add\_to\_database)@\spxentry{add()}\spxextra{в модуле blueprints.add\_to\_database}|hyperpage}{41}
+\indexentry{add\_file() (в модуле blueprints.add\_to\_database)@\spxentry{add\_file()}\spxextra{в модуле blueprints.add\_to\_database}|hyperpage}{41}
+\indexentry{add\_new\_author() (в модуле blueprints.add\_to\_database)@\spxentry{add\_new\_author()}\spxextra{в модуле blueprints.add\_to\_database}|hyperpage}{42}
+\indexentry{add\_new\_tag() (в модуле blueprints.add\_to\_database)@\spxentry{add\_new\_tag()}\spxextra{в модуле blueprints.add\_to\_database}|hyperpage}{43}
+\indexentry{change\_add\_author() (в модуле blueprints.add\_to\_database)@\spxentry{change\_add\_author()}\spxextra{в модуле blueprints.add\_to\_database}|hyperpage}{43}
+\indexentry{change\_add\_tag() (в модуле blueprints.add\_to\_database)@\spxentry{change\_add\_tag()}\spxextra{в модуле blueprints.add\_to\_database}|hyperpage}{43}
+\indexentry{module@\spxentry{module}!blueprints.auth@\spxentry{blueprints.auth}|hyperpage}{44}
+\indexentry{blueprints.auth@\spxentry{blueprints.auth}!module@\spxentry{module}|hyperpage}{44}
+\indexentry{exit() (в модуле blueprints.auth)@\spxentry{exit()}\spxextra{в модуле blueprints.auth}|hyperpage}{44}
+\indexentry{index() (в модуле blueprints.auth)@\spxentry{index()}\spxextra{в модуле blueprints.auth}|hyperpage}{44}
+\indexentry{main() (в модуле blueprints.auth)@\spxentry{main()}\spxextra{в модуле blueprints.auth}|hyperpage}{44}
+\indexentry{module@\spxentry{module}!blueprints.book\_read@\spxentry{blueprints.book\_read}|hyperpage}{45}
+\indexentry{blueprints.book\_read@\spxentry{blueprints.book\_read}!module@\spxentry{module}|hyperpage}{45}
+\indexentry{add\_note() (в модуле blueprints.book\_read)@\spxentry{add\_note()}\spxextra{в модуле blueprints.book\_read}|hyperpage}{45}
+\indexentry{change\_page\_marker() (в модуле blueprints.book\_read)@\spxentry{change\_page\_marker()}\spxextra{в модуле blueprints.book\_read}|hyperpage}{45}
+\indexentry{open\_book() (в модуле blueprints.book\_read)@\spxentry{open\_book()}\spxextra{в модуле blueprints.book\_read}|hyperpage}{46}
+\indexentry{module@\spxentry{module}!blueprints.change\_book\_information@\spxentry{blueprints.change\_book\_information}|hyperpage}{47}
+\indexentry{blueprints.change\_book\_information@\spxentry{blueprints.change\_book\_information}!module@\spxentry{module}|hyperpage}{47}
+\indexentry{change\_book() (в модуле blueprints.change\_book\_information)@\spxentry{change\_book()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{47}
+\indexentry{change\_category() (в модуле blueprints.change\_book\_information)@\spxentry{change\_category()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{47}
+\indexentry{change\_description() (в модуле blueprints.change\_book\_information)@\spxentry{change\_description()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{47}
+\indexentry{change\_language() (в модуле blueprints.change\_book\_information)@\spxentry{change\_language()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{48}
+\indexentry{change\_page() (в модуле blueprints.change\_book\_information)@\spxentry{change\_page()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{48}
+\indexentry{change\_path\_book() (в модуле blueprints.change\_book\_information)@\spxentry{change\_path\_book()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{48}
+\indexentry{change\_path\_image() (в модуле blueprints.change\_book\_information)@\spxentry{change\_path\_image()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{49}
+\indexentry{change\_title() (в модуле blueprints.change\_book\_information)@\spxentry{change\_title()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{49}
+\indexentry{change\_year() (в модуле blueprints.change\_book\_information)@\spxentry{change\_year()}\spxextra{в модуле blueprints.change\_book\_information}|hyperpage}{50}
+\indexentry{module@\spxentry{module}!blueprints.change\_state@\spxentry{blueprints.change\_state}|hyperpage}{50}
+\indexentry{blueprints.change\_state@\spxentry{blueprints.change\_state}!module@\spxentry{module}|hyperpage}{50}
+\indexentry{change\_end\_read() (в модуле blueprints.change\_state)@\spxentry{change\_end\_read()}\spxextra{в модуле blueprints.change\_state}|hyperpage}{50}
+\indexentry{change\_in\_read() (в модуле blueprints.change\_state)@\spxentry{change\_in\_read()}\spxextra{в модуле blueprints.change\_state}|hyperpage}{50}
+\indexentry{change\_on\_favorite() (в модуле blueprints.change\_state)@\spxentry{change\_on\_favorite()}\spxextra{в модуле blueprints.change\_state}|hyperpage}{51}
+\indexentry{module@\spxentry{module}!blueprints.function@\spxentry{blueprints.function}|hyperpage}{51}
+\indexentry{blueprints.function@\spxentry{blueprints.function}!module@\spxentry{module}|hyperpage}{51}
+\indexentry{check\_book\_on\_user() (в модуле blueprints.function)@\spxentry{check\_book\_on\_user()}\spxextra{в модуле blueprints.function}|hyperpage}{51}
+\indexentry{formation\_authors() (в модуле blueprints.function)@\spxentry{formation\_authors()}\spxextra{в модуле blueprints.function}|hyperpage}{51}
+\indexentry{formation\_tags() (в модуле blueprints.function)@\spxentry{formation\_tags()}\spxextra{в модуле blueprints.function}|hyperpage}{52}
+\indexentry{parser\_html\_ajax() (в модуле blueprints.function)@\spxentry{parser\_html\_ajax()}\spxextra{в модуле blueprints.function}|hyperpage}{52}
+\indexentry{parser\_list\_in\_list() (в модуле blueprints.function)@\spxentry{parser\_list\_in\_list()}\spxextra{в модуле blueprints.function}|hyperpage}{52}
+\indexentry{module@\spxentry{module}!blueprints.search\_filter@\spxentry{blueprints.search\_filter}|hyperpage}{52}
+\indexentry{blueprints.search\_filter@\spxentry{blueprints.search\_filter}!module@\spxentry{module}|hyperpage}{52}
+\indexentry{filter() (в модуле blueprints.search\_filter)@\spxentry{filter()}\spxextra{в модуле blueprints.search\_filter}|hyperpage}{52}
+\indexentry{search() (в модуле blueprints.search\_filter)@\spxentry{search()}\spxextra{в модуле blueprints.search\_filter}|hyperpage}{54}
+\indexentry{module@\spxentry{module}!blueprints.select\_books@\spxentry{blueprints.select\_books}|hyperpage}{55}
+\indexentry{blueprints.select\_books@\spxentry{blueprints.select\_books}!module@\spxentry{module}|hyperpage}{55}
+\indexentry{article() (в модуле blueprints.select\_books)@\spxentry{article()}\spxextra{в модуле blueprints.select\_books}|hyperpage}{55}
+\indexentry{books() (в модуле blueprints.select\_books)@\spxentry{books()}\spxextra{в модуле blueprints.select\_books}|hyperpage}{56}
+\indexentry{joornal() (в модуле blueprints.select\_books)@\spxentry{joornal()}\spxextra{в модуле blueprints.select\_books}|hyperpage}{57}
+\indexentry{module@\spxentry{module}!blueprints.select\_books\_state@\spxentry{blueprints.select\_books\_state}|hyperpage}{58}
+\indexentry{blueprints.select\_books\_state@\spxentry{blueprints.select\_books\_state}!module@\spxentry{module}|hyperpage}{58}
+\indexentry{end\_read() (в модуле blueprints.select\_books\_state)@\spxentry{end\_read()}\spxextra{в модуле blueprints.select\_books\_state}|hyperpage}{58}
+\indexentry{favorites() (в модуле blueprints.select\_books\_state)@\spxentry{favorites()}\spxextra{в модуле blueprints.select\_books\_state}|hyperpage}{59}
+\indexentry{on\_reading() (в модуле blueprints.select\_books\_state)@\spxentry{on\_reading()}\spxextra{в модуле blueprints.select\_books\_state}|hyperpage}{60}
+\indexentry{module@\spxentry{module}!blueprints.style@\spxentry{blueprints.style}|hyperpage}{61}
+\indexentry{blueprints.style@\spxentry{blueprints.style}!module@\spxentry{module}|hyperpage}{61}
+\indexentry{style1() (в модуле blueprints.style)@\spxentry{style1()}\spxextra{в модуле blueprints.style}|hyperpage}{61}
+\indexentry{style2() (в модуле blueprints.style)@\spxentry{style2()}\spxextra{в модуле blueprints.style}|hyperpage}{61}
+\indexentry{style3() (в модуле blueprints.style)@\spxentry{style3()}\spxextra{в модуле blueprints.style}|hyperpage}{61}
+\indexentry{style4() (в модуле blueprints.style)@\spxentry{style4()}\spxextra{в модуле blueprints.style}|hyperpage}{61}
+\indexentry{style5() (в модуле blueprints.style)@\spxentry{style5()}\spxextra{в модуле blueprints.style}|hyperpage}{62}

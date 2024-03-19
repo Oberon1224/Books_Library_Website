@@ -1,0 +1,189 @@
+{% block content %}
+<html>
+    
+    {% include 'header.html' %}
+    <!--Контейнер со всеми книгами-->
+    <div class="all_block_books">
+        <!--Блок с книгой-->
+        <div class="books_block_inside">
+            <!-- @param count - пространство содержащее переменную i (счетчик) -->
+            {% set count = namespace(i=1) %}
+            
+            <!--Проверка размера количества книг-->
+            <!-- @param len_books - количество книг -->
+            <!-- @param num количество блоков на странице (максимальное количество 4) -->
+            {% set len_books = books | length %} 
+            {% if len_books < 4 %} <!--Если количестов книг меньше 4 то num для ranga равен разнице книг и -->
+                {% set num = len_books %}
+            {% else %}
+                {% set num = 4 %}
+            {% endif %}
+
+            <!--Начало цикла формирования страниц если k < [количество книг  + 1] то выйти из цикла-->
+            {% for k in range((page - 1) * num + 1, page * num + 1) if k < len_books + 1 %} 
+                <!-- @param class_name - класс для блока книги -->
+                <!-- @param count.i - переменная счетчик -->
+                <!-- @param class_name - класс для блока книги -->
+                <!-- @param btn_open_id - id для кнопки открыть -->
+                <!-- @param block_book_id - id для блока книги открыть -->
+                <!-- @param btn_close_id - id для кнопки закрыть -->
+                {% set class_name = 'open_file_book_window position' + count.i | string %} 
+                {% set count.i = count.i + 1 %}  
+                {% set btn_open_id = 'btn_open' + k | string %} 
+                {% set block_book_id ='block_book' + k | string %} 
+                {% set btn_close_id = 'btn_close' + k | string %}   
+                <!--Блок книги 1 уровня-->
+                <div class="books_block">
+                    <!--Блок книги 2 уровня-->
+                    <div>
+                        <!--Блок описания, изображения-->
+                        <div style="display: inline-block;">
+                            <!--Изображение книги-->
+                            <img id="image{{count.i}}"  class="image_book" src={{books[k-1][3]}}>
+                            <script> bind_error_image('image{{count.i}}'); </script>
+                            <!--Блок описания книги-->
+                            <div class="container_book_info" style="display: inline-block;">
+                                <!--Заголовок названия книги-->
+                                <!-- @param books[k-1][1] - название книги -->
+                                <div class ="label_title">{{books[k-1][1]}}</div>
+                                <!--Заголовок имени автора-->
+                                <!-- @param author - автор для книги -->
+                                <!-- @function authors.select_on_id_book(books[k-1][0]) - выборка авторов по id книги -->
+                                {% set author = authors.select_on_id_book(books[k-1][0]) %}
+                                <div class ="label_author">{% for au in author%}{{au[0]}}.  {% endfor %}</div>
+
+                                <!--Заголовок языка книги и года издания-->
+                                <!-- @param books[k-1][6] - год издания книги -->
+                                <!-- @param books[k-1][5] - язык книги -->
+                                <div class ="label_year_language">Год: {{books[k-1][6]}} <br> Язык: {{books[k-1][5]}} </div>
+                                <!--Заголовок категории книги-->
+                                <!-- @param books[k-1][7] - категория книги -->
+                                <!-- @param state_book - статус книги для заданного пользователя -->
+                                <!-- @function state.select_state_name(id_user, books[k-1][0]) - выборка статуса книги для пользователя-->
+                                <div class ="label_category">Категория: {{books[k-1][7]}} </div>
+                                {% set state_book = state.select_state_name(id_user, books[k-1][0]) %} 
+                                <!--Заголовок статуса книги-->
+                                <div class ="label_state"> Статус: {{state_book}}</div>
+                                <!--Описание книги-->
+                                <!-- @param books[k-1][4] - описание книги -->
+                                <div class ="text_book">{{books[k-1][4]}}</div>
+                                <br>
+
+                                <!--Контейнер блоков тэгов книги-->
+                                <div class ="tags_book" style="display:inline-flex"> 
+                                    <!--Контейнер тэгов-->
+                                    <!-- @param tag - тэги для книги -->
+                                    <!-- @function tags.select_on_id_book(books[k-1][0]) - выборка тэга/тэгов для книги -->
+                                    {% set tag = tags.select_on_id_book(books[k-1][0]) %}
+                                    {% for l in tag %}
+                                        <div class="tag_container">{{l[0]}} </div><p> </p>
+                                    {% endfor %}
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <!--Блок описания, изображения-->
+                        <div style="display: inline-block;">
+                            <!--Кнопка Открыть -->    
+                            <form method="post" action="/{{login}}/open/{{books[k-1][0]}}">
+                                <input type="submit" id={{btn_open_id}}  class="button_container_books1 low_button" value="Открыть">
+                            </form>  
+
+                            <!--Кнопка Изменить -->  
+                            <form action="/{{login}}/change_book/{{books[k-1][0]}}">
+                                <input type="submit"  class="button_container_books2 low_button" value="Изменить" >
+                            </form> 
+                            <!--Кнопка В избранное-->      
+                            <form >
+                                <!-- @function change_state_favorite - изменение статуса на "Избранное" -->
+                                <!-- @param login - логин пользователя -->
+                                <!-- @param books[k-1][0]} - id книги -->
+                                <script>change_state_favorite('{{login}}', '{{books[k-1][0]}}');</script>
+                                <input id = "favorite{{books[k-1][0]}}" type="submit"  class="button_container_books3 low_button" value="В избранное ">
+                            </form>
+                            <!--Кнопка На чтение-->     
+                            <form>
+                                <!-- @function change_state_favorite - изменение статуса на "На чтении" -->
+                                <!-- @param login - логин пользователя -->
+                                <!-- @param books[k-1][0]} - id книги -->
+                                <script>change_state_in_read('{{login}}', '{{books[k-1][0]}}');</script>
+                                <input id = "in_read{{books[k-1][0]}}" type="submit"  class="button_container_books4 low_button" value="На чтение">
+                            </form>
+                            <!--Кнопка В прочитанное-->     
+                            <form>
+                                <!-- @function change_state_favorite - изменение статуса на "Прочитанное" -->
+                                <!-- @param login - логин пользователя -->
+                                <!-- @param books[k-1][0]} - id книги -->
+                                <script>change_state_end_read('{{login}}', '{{books[k-1][0]}}');</script>
+                                <input id = "end_read{{books[k-1][0]}}" type="submit"  class="button_container_books5 low_button" value="В прочитанное">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br><br>                
+            {% endfor %}
+
+            {% if len_books > 4%}
+            <span class="page" style="display: inline-flex;">
+                <!--@param page_last - последняя страница-->
+                {% set page_last = ((len_books | float) / 4.0) | round (0,'ceil') | int %}    
+                <!--Логика перехода и смены трех страниц-->
+                {% if page != 1 %}
+                    {% set page_back = page - 1 %}
+                    {% set page_next = page + 1 %}
+                {% endif %}
+
+                {% if page == 1 %}
+                    {% set page_back = 1 %}
+                    {% set page = 2 %}
+                    {% set page_next = 3 %}
+                {% endif %}
+
+                <!--@param category_for_url - категория книг для выбранной страницы (журналы, статьи, книги)-->
+                {% set category_for_url = category %} 
+                <!--Кнопки переходы между страницами--> 
+                <form method="post" action="/{{login}}/{{category_for_url}}/page/{{page_back}}">
+                    <input type="submit" class=" page_container low_button" value="{{page_back}}">
+                </form>
+                
+                <form method="post" action="/{{login}}/{{category_for_url}}/page/{{page}}">
+                    <input type="submit" class=" page_container low_button" value="{{page}}">
+                </form>
+        
+                {% if page_last != page %}
+                    <form method="post" action="/{{login}}/{{category_for_url}}/page/{{page_next}}">
+                        <input type="submit" class=" page_container low_button" value="{{page_next}}">
+                    </form>
+                    <form method="post" action="/{{login}}/{{category_for_url}}/page/{{page + 1}}">
+                        <input type="submit" class=" page_container low_button" value="Вперед">
+                    </form>
+                {% else %}
+                    <form method="post" action="/{{login}}/{{category_for_url}}/page/{{page - 1}}">
+                        <input type="submit" class=" page_container low_button" value="Назад">
+                    </form>
+                {% endif %}
+            </span> 
+            {% endif %} 
+        </div>
+    </div>
+
+
+
+    <!--Открытие файла при нажатии кнопки открыть - для заполнения блоков книг при обработке событий-->
+    <!--@param count - пространство содержащее переменную i (счетчик)-->
+    <!--@param books - список книг)-->  
+    <!--@param class_name - список книг)-->  
+    <!--@param block_book_id - список книг)--> 
+    <!--@param btn_close_id - список книг)--> 
+    {% set count = namespace(i=1) %}
+    {% for k in books if count.i < 5%}
+        {% set class_name = 'open_file_book_window position' + count.i | string %}
+        {% set count.i = count.i + 1 %}
+        {% set block_book_id ='block_book' + k[0] | string %}
+        {% set btn_close_id = 'btn_close' + k[0] | string %}
+    {% endfor %}
+    
+    {% include 'style.html' %}
+</html>
+{% endblock %}

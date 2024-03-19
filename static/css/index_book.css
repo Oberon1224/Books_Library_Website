@@ -1,0 +1,102 @@
+
+/**
+* Главный контейнер страницы авторизации
+*/
+.window{
+    position: relative;
+    width: 1000x;
+    height: 1200px; 
+    background-attachment: fixed;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),12px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),104px 110px 91px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),119px 305px 118px 0px rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(22px);
+    background: linear-gradient(to bottom, rgb(13, 13, 13), rgba(17, 17, 17, 0.98), rgb(8, 7, 7), rgba(24, 22, 22, 0.98), rgb(17, 15, 14));
+}
+
+/**
+* Класс контейнер для полей ввода логина и пароля
+*/
+.input_lk{
+    width: 355px;
+    height: 70px;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgb(44, 7, 7),0px 6px 12px 0px rgba(44, 7, 7, 0.98),1px 23px 23px 0px rgba(44, 7, 7, 0.85),2px 51px 31px 0px rgba(44, 7, 7, 0.5),4px 90px 36px 0px rgba(44, 7, 7, 0.15),6px 141px 40px 0px rgba(44, 7, 7, 0.02);
+    background: rgb(196, 196, 196);
+}
+
+/**
+* Расположение контейнера ввода логина
+*/
+#login_input{
+    position: absolute;
+    left: 1123px;
+    top: 217px;
+}
+
+/**
+* Расположение контейнера ввода пароля
+*/
+#password_input{
+    position: absolute;
+    left: 1123px;
+    top: 417px;
+}
+
+/**
+* Класс надписей для окна авторизации
+*/
+.label_auth{
+color:white;
+font-size: 36px;
+}
+
+/**
+* Надпись логин
+*/
+#lable_login{
+    position: absolute;
+    left: 1123px;
+    top: 127px;
+}
+
+/**
+* Надпись Пароль
+*/
+#label_password{
+    position: absolute;
+    left: 1123px;
+    top: 327px;
+}
+
+/**
+* Кнопка войти
+*/
+#button_in{
+    position: absolute;
+    left: 1123px;
+    top: 527px;
+    font-size: 36px;
+    width: 370px;
+    text-align: center;
+    color:rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(214, 21, 21);
+    cursor: pointer;
+    border: 1px solid rgb(248, 246, 246);
+    box-shadow: 0px 0px 0px 0px rgb(44, 7, 7),0px 6px 12px 0px rgba(44, 7, 7, 0.98),1px 23px 23px 0px rgba(44, 7, 7, 0.85),2px 51px 31px 0px rgba(44, 7, 7, 0.5),4px 90px 36px 0px rgba(44, 7, 7, 0.15),6px 141px 40px 0px rgba(44, 7, 7, 0.02);
+}
+
+/**
+* Класс полей для ввода
+*/
+.text_input{
+    position: absolute;
+    width: 371px;
+    height: 70px;
+    font-size: 25px;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgb(44, 7, 7),0px 6px 12px 0px rgba(44, 7, 7, 0.98),1px 23px 23px 0px rgba(44, 7, 7, 0.85),2px 51px 31px 0px rgba(44, 7, 7, 0.5),4px 90px 36px 0px rgba(44, 7, 7, 0.15),6px 141px 40px 0px rgba(44, 7, 7, 0.02);
+    background: rgb(196, 196, 196);
+}
+

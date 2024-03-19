@@ -1,0 +1,172 @@
+{% block content %}
+<html>
+    {% include 'header.html' %}
+    <div class="add_file_class" >
+      <!--Информаци о книге-->
+      <!--Контейнер информации о книге-->
+      <div class="div_add_information_book">
+        <!--Заголовок названия книги-->
+        <p  class="label_add_book p_add_title_book">Информация о книге<br><br>Название книги</p>  
+        <!--Поле ввода названия книги-->
+        <form >
+          <input name = "title_for_add" type="text" id="title_book" class = "input_add_book_class input_title_book">
+        </form>    
+
+        <!--Заголовок количества страниц книги-->
+        <p class="label_add_book p_add_page_book">Количество страниц</p>  
+        <!--Поле ввода количества страниц книги-->
+        <input type="text" id="count_pages" class = "input_add_book_class input_page_book">  
+
+        <!--Заголовок путь к книге-->
+        <p class="label_add_book p_add_path_book">Путь к книге</p>  
+        <!--Поле ввода пути к файлу книги-->
+        <input type="text" id="path_file_book" class = "input_add_book_class input_path_book" value = "/static/books/"> 
+
+        <!--Заголовок путь к изображению книги-->
+        <p class="label_add_book p_add_image_book">Путь к изображению книги</p>  
+        <!--Поле ввода к изображению книги-->
+        <input type="text" id="path_image_book"  class = "input_add_book_class input_image_book" value = "/static/images/books/"> 
+
+        <!--Раскрывающий список выбора категории книги-->
+        <select id="category_book" class="add_book_combobox combobox_category">
+          <option disabled selected>Выберите категорию</option>
+          <option>Все</option>
+          <!-- @function category.select_all() - выборка всех записей из таблицы category -->
+          {% if category.select_all() != None %}
+            {% for i in category.select_all() %}
+              <option>{{i[1]}}</option>
+            {% endfor %}
+          {% endif %}
+        </select>
+
+        <!--Раскрывающий список выбора языка книги-->
+        <select id="language_book" class="add_book_combobox combobox_language">
+          <option disabled selected>Выберите язык</option>
+          <option>Все</option>
+          <!-- @function language.select_all() - выборка всех записей из таблицы language -->
+          {% if language.select_all() != None %}
+            {% for i in language.select_all() %}
+              <option>{{i[1]}}</option>
+            {% endfor %}
+          {% endif %}
+        </select>
+
+        <!--Раскрывающий список выбора года издания книги-->
+        <select id="year_book" class="add_book_combobox combobox_year">
+          <option disabled selected>Выберите год</option>
+          <option>Все</option>
+          <!-- @function year.select_all() - выборка всех записей из таблицы year -->
+          {% if year.select_all() != None %}
+            {% for i in year.select_all() %}
+              <option>{{i[1]}}</option>
+            {% endfor %}
+          {% endif %}
+        </select>
+      </div>
+
+      <!--Авторы книги-->
+      <div class="add_book_author"> 
+
+        <!--Заголовок Авторы к книге и фамилии автора-->
+        <p class="label_add_book surname_author_label" >Авторы книги<br><br>Добавить нового автора<br>Фамилия</p>  
+        <!--Поле ввода фамилии автора-->
+        <input type="text" id="surname_author_id" class = "input_add_book_class surname_author_input">
+
+        <!--Заголовок имя автора-->
+        <p class="label_add_book name_author_label ">Имя</p>  
+        <!--Поле ввода имени автора-->
+        <input type="text" id="name_author_id" class = "input_add_book_class name_author_input">
+
+        <!--Заголовок отчества автора-->
+        <p class="label_add_book patronymic_author_label">Отчество</p>  
+        <!--Поле ввода отчества автора-->
+        <input type="text" id="patronymic_author_id" class = "input_add_book_class patronymic_author_input">
+
+        <!--Кнопка Добавить нового автора-->
+        <form>
+          <input type="submit" id="btn_new_author" class = "low_button button_add_new_author" value="Добавить нового автора">
+        </form>
+
+        <!--Заголовок Список авторов для книги-->
+        <p class="label_add_book title_list_authors">Список авторов для книги</p>
+
+        <!--Список авторов для книги-->
+        <select id="selected_authors_list" class="field_combobox_add_book field_authors" name="author_selected" multiple="multiple" >
+        </select>   
+
+        <!--Кнопка Добавить автора в список-->
+        <input type="submit" class = "low_button button_add_list_author" value="Добавить автора в список" 
+        onclick="add_in_list('#select_authors_for_create option:selected:selected', 'selected_authors_list');">
+
+        <!--Раскрывающий список авторов-->
+        <!-- @param authors - выборка всех записей из таблицы author -->
+        {% if author.select_all() != None %}
+          {% set authors = author.select_all() %}
+          <select id="select_authors_for_create" class="add_book_combobox combobox_authors">
+            <option disabled selected>Выберите автора</option>
+            <option>Все</option>
+          {% for i in authors %}
+            <!-- @param fio - фамилия, имя и отчество автора -->
+            {% set fio = i[1] + ' ' + i[2] + ' ' + i[3] %}          
+            <option>{{fio}}</option>
+          {% endfor %}
+        {% endif %}
+        </select>        
+      </div> 
+
+      <!--Тэги книги-->
+      <div class="add_book_tags"> 
+        <!--Заголовок Тэги книги, Добавить новый тэг, Название тэга-->
+        <p class="label_add_book tag_label" >Тэги книги<br><br>Добавить новый тэг<br>Название тэга</p>  
+
+        <!--Поле ввода нового тэга-->
+        <input type="text" id="new_tag_book_id" class = "input_add_book_class name_tag_input">
+
+        <!--Кнопка добавления нового тэга-->
+        <form>
+          <input id="new_tag" type="submit" class = "low_button button_new_tag" value="Добавить новый тэг">
+        </form>
+
+        <!--Заголовок Список тэгов для книги-->
+        <p class="label_add_book label_list_tags">Список тэгов для книги</p>
+
+        <!-- Список тэгов для книги-->
+        <select id="selected_tags" class="field_combobox_add_book field_list_tags" name="author_selected" multiple="multiple" >
+        </select>   
+
+        <!-- Кнопка Добавить тэг в список-->
+        <input id="btn_add_tag_list" type="submit" class = "low_button button_add_list_tag" value="Добавить тэг в список" 
+        onclick="add_in_list('#combobox_tags option:selected:selected', 'selected_tags');">
+        
+        <!--Раскрывающий список выбора тэга-->
+        <select  id="combobox_tags" class="add_book_combobox combobox_tags">
+          <option disabled selected>Выберите тэг</option>
+          <option>Все</option>
+          <!-- @function tags.select_all() - выборка всех записей из таблицы tags -->
+          {% if tags.select_all() != None %}
+            {% for i in tags.select_all() %}
+              <option>{{i[1]}}</option>
+            {% endfor %}
+          {% endif %}
+        </select>        
+      </div> 
+
+      <!--Описание книги-->
+      <div class = description_book>
+
+        <!--Заголовок Описание книги-->
+        <p class="label_add_book description_book_label">Описание книги</p> 
+
+        <!--Текстовое поле Описание книги-->
+        <textarea id="description_book_id" class = "input_add_book_class description_book_input"></textarea>
+      </div>
+      <!--Кнопка Добавить книгу-->
+      <form>
+        <input id = "btn_add_file" type="submit" class="low_button button_create_book" value="Добавить книгу">     
+      </form>
+
+    </div>
+
+    {% include 'style.html' %}
+</html>
+{% endblock %}

@@ -1,0 +1,290 @@
+/** 
+* класс кнопок верхнего меню
+*/
+.menu_button{
+	position: absolute;
+	top: 30px;
+	width: 214px;
+	height: 72px;
+	font-family: Inter;
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 34px;
+	letter-spacing: 0px;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	font-variant: small-caps;	
+	cursor: pointer;
+	background-color: rgb(236, 65, 14); 
+	border-color: black; 
+	border-width: 1px; 
+	border-style: solid;
+	box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+	opacity: 0.6;
+	transition: 0.3s;
+	border-radius: 10%;
+}
+.menu_button:hover {opacity: 1}
+
+
+/** 
+* расположение кнопки 1 
+*/
+#menu_button1{
+	left: 25px;
+}
+
+
+/** 
+* расположение кнопки 2 
+*/
+#menu_button2
+{
+	left: 345px;
+}
+
+
+/** 
+* расположение кнопки 3 
+*/
+#menu_button3{
+	left: 672px;
+}
+
+
+/** 
+* расположение кнопки 4 
+*/
+#menu_button4{
+	left: 990px;
+}
+
+
+/** 
+* расположение кнопки 5 
+*/
+#menu_button5{
+	left: 1310px;
+}
+
+
+/** 
+* Класс для всех кнопок сайта
+*/
+.low_button{
+	color: rgb(255, 255, 255);
+	font-family: Inter;
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 34px;
+	letter-spacing: 0px;
+	text-align: center;
+	font-variant: small-caps;	
+	width: 158px; height: 67px; 
+	background-color: rgba(236,65,14, 1);
+	border-radius: 9999px; 
+	border-color: black; 
+	border-width: 1px; 
+	border-style: solid;
+	position: absolute;
+	box-sizing: border-box;
+	border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgb(44, 22, 7),0px 6px 12px 0px rgba(44, 7, 7, 0.2),1px 23px 23px 0px rgba(44, 7, 7, 0.2), 2px 51px 31px 0px rgba(44, 7, 7, 0.5),4px 90px 36px 0px rgba(44, 7, 7, 0.15),6px 141px 40px 0px rgba(44, 7, 7, 0.02);
+	border-radius: 10%;
+	opacity: 0.6;
+	transition: 0.3s;
+	cursor: pointer;
+}
+.low_button:hover {opacity: 1}
+
+
+/** 
+* кнопка скрыть/показать 
+* расположение кнопки показать верхнее меню 
+*/
+.button_hide_class{
+	left: 25px;
+	top: 150px;
+	width: 130px;
+	height: 67px;
+}
+
+
+/** 
+* расположение кнопки скрыть верхнее меню 
+*/
+.button_show_class{
+	visibility: hidden;
+	left: 25px;
+	top: 150px;
+	width: 130px;
+	height: 67px;
+}
+
+
+/** 
+* кнопки изменения стиля сайта
+*/
+.button_style{
+	visibility: hidden;
+	position: fixed;
+	top: 150px;
+	left: 175px;
+	opacity: 0.6;
+	transition: 0.3s;
+	cursor: pointer;
+
+}
+.button_style:hover {opacity: 1}
+
+
+/** 
+* главная кнопка изменения стиля сайта
+*/
+.button_style_visibility_main{
+	height: 67px;
+	width: 95px;
+	visibility: visible;
+	border-radius: 10%;
+}
+
+
+/** 
+* расположение кнопки стиля 1
+*/
+.button_style_position1{
+	background-color: rgb(214, 129, 24);
+	height: 40px;
+	width: 35px;
+	left: 30px;
+	top: 250px;
+	border-radius: 100%;
+}
+
+
+/** 
+* расположение кнопки стиля 2
+*/
+.button_style_position2{
+	background-color: rgba(158, 181, 181, 0.848);
+	height: 40px;
+	width: 35px;
+	left: 80px;
+	top: 250px;
+	border-radius: 100%;
+}
+
+
+/** 
+* расположение кнопки стиля 3
+*/
+.button_style_position3{
+	background-color: rgb(49,54,89);
+	height: 40px;
+	width: 35px;
+	left: 130px;
+	top: 250px;
+	border-radius: 100%;
+}
+
+
+/** 
+* расположение кнопки стиля 4
+*/
+.button_style_position4{
+	background-color: rgb(112,245,41);
+	height: 40px;
+	width: 35px;
+	left: 180px;
+	top: 250px;
+	border-radius: 100%;
+}
+
+
+/** 
+* расположение кнопки стиля 5
+*/
+.button_style_position5{
+	background-color: rgb(18, 20, 20);
+	height: 40px;
+	width: 35px;
+	left: 230px;
+	top: 250px;
+	border-radius: 100%; 
+}
+
+
+/** 
+* главный контейнер сайта 
+*/
+.main_window_library{
+	position: relative;
+	width: 1555px;
+	max-height: 2500px;
+	height: 2500px; 
+	background-attachment: fixed;
+	backdrop-filter: blur(22px);
+	background: rgb(22, 22, 22);
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+}
+
+
+/** 
+* класс кнопки фильтр 
+*/
+.button_filter_class{
+	width: 158px;
+	height: 67px;
+	left: 370px;
+	top: 150px;
+}
+
+
+/** 
+* поле ввода для поиска 
+*/
+.search_input_class{
+	position: absolute;
+	width: 971px;
+	height: 70px;
+	left: 550px;
+	top: 150px;
+	font-size: 25px;
+	box-sizing: border-box;
+	border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+	background: rgb(196, 196, 196);
+}
+
+
+/** 
+* кнопка найти 
+*/
+.button_search_class{
+	width: 158px;
+	height: 67px;
+	left: 1360px;
+	top: 150px;
+	background: rgb(236,65,14);
+	color: white;
+}
+
+
+/** 
+* Контейнер для страниц 
+*/
+.page{
+	position: relative;
+
+	top:20px;
+	left: 395px;
+}
+
+
+/** 
+* Блок страницы 
+*/
+.page_container{
+	width: 125px;
+	position: relative;
+}

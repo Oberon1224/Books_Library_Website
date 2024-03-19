@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>blueprints.style &#8212; документация Книжная библиотека 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/classic.css?v=514cf933" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+    
+    <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=29b1f277"></script>
+    
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Алфавитный указатель"
+             accesskey="I">указатель</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">документация Книжная библиотека 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Код модуля</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blueprints.style</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Исходный код blueprints.style</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">current_app</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">,</span> <span class="n">template_folder</span> <span class="o">=</span> <span class="s1">&#39;templates&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="style1">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.style.style1">[документация]</a>
+<span class="nd">@style</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/style1&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">style1</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция меняет стиль страницы</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Изменение стиля</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;style1&#39;</span><span class="p">)</span>
+    <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;style1&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Установлен стиль 1&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;style1&#39;</span></div>
+
+
+<div class="viewcode-block" id="style2">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.style.style2">[документация]</a>
+<span class="nd">@style</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/style2&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">style2</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция меняет стиль страницы</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Изменение стиля</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;style2&#39;</span><span class="p">)</span>
+    <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;style2&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Установлен стиль 2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;style2&#39;</span></div>
+
+
+<div class="viewcode-block" id="style3">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.style.style3">[документация]</a>
+<span class="nd">@style</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/style3&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">style3</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция меняет стиль страницы</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Изменение стиля</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;style3&#39;</span><span class="p">)</span>
+    <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;style3&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Установлен стиль 3&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;style3&#39;</span></div>
+
+
+<div class="viewcode-block" id="style4">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.style.style4">[документация]</a>
+<span class="nd">@style</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/style4&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">style4</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция меняет стиль страницы</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Изменение стиля</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;style4&#39;</span><span class="p">)</span>
+    <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;style4&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Установлен стиль 4&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;style4&#39;</span></div>
+
+
+<div class="viewcode-block" id="style5">
+<a class="viewcode-back" href="../../blueprints.html#blueprints.style.style5">[документация]</a>
+<span class="nd">@style</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/style5&#39;</span><span class="p">,</span> <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">style5</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Эта функция меняет стиль страницы</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Изменение стиля</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;style5&#39;</span><span class="p">)</span>
+    <span class="n">current_app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;STYLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;style5&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Установлен стиль 5&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;style5&#39;</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Навигация</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Алфавитный указатель"
+             >указатель</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Содержание модулей Python"
+             >модули</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">документация Книжная библиотека 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Код модуля</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">blueprints.style</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Авторские права 2024, Бушуев Дмитрий.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+/** 
+* Окно фильтра поиска
+*/
+.filter_window{
+    visibility: hidden;
+    background-color: rgba(22, 22, 22);
+    width: 1150px;
+    height: 70px;
+    z-index: 15;
+    position: relative;
+    left: 370px;
+    top: -630px;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+}
+
+
+/** 
+* Класс раскрывающегося списка фильтра поиска
+*/
+.select_filter{
+    width: 380px;
+    font-size: 21px;
+    background-color: rgb(222,211,213);
+    
+}
+
+
+/** 
+* Класс кнопок в окне Фильтр
+*/
+.button_filter{
+    height:40px;
+    width: 120px;
+    font-size: 21px;
+}
+
+
+/** 
+* Кнопка применения фильтра
+*/
+#enter_window_filter{
+    position: absolute;
+    left:1010px;
+    top:30px;
+}

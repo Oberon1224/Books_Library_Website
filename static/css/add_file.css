@@ -1,0 +1,444 @@
+/** 
+* Контейнер добавления файла
+*/
+.add_file_class{
+    position: relative;
+    top: -630px;
+    left: 375px;
+    width: 1150px;
+    height: 860px;
+    background-color: rgb(22, 22, 22); 
+    border-color: black; 
+    border-width: 1px; 
+    border-style: solid;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Контейнер информация о книге
+*/
+.div_add_information_book{
+    position: relative;
+    top:15px;
+    left:35px;
+    width: 320px;
+    background-color: rgb(22, 22, 22);
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Класс текстовых полей добавления файла
+*/
+.input_add_book_class{
+ color: rgb(0, 0, 0);
+ font-size: 26px;
+ width: 300px;
+}
+
+
+/** 
+* Класс заголовков текстовых полей добавления файла
+*/
+.label_add_book{
+    position: relative;
+    font-size: 26px;
+    color: rgb(255, 255, 255);
+}
+
+
+/**
+* Заголовок названия книги
+*/
+.p_add_title_book{
+    top:10px; 
+    left: 10px;
+}
+
+
+/** 
+* Поле ввода названия книги
+*/
+.input_title_book{
+    position: relative;
+    top: -15px;
+    left: 10px;
+}
+
+
+/** 
+* Заголовок количества страниц книги
+*/
+.p_add_page_book{
+    top:-20px; 
+    left: 10px;
+}
+
+
+/** 
+* Поле ввода количества страниц книги
+*/
+.input_page_book{
+    position: relative;
+    top: -45px;
+    left: 10px;
+}
+
+
+/**
+* Заголовок путь к книге
+*/
+.p_add_path_book{
+    top:-55px; 
+    left: 10px;
+}
+
+
+/** 
+* Поле ввода пути к файлу книги
+*/
+.input_path_book{
+    position: relative;
+    top: -80px;
+    left: 10px;
+}
+
+
+/** 
+* Заголовок путь к изображению книги
+*/
+.p_add_image_book{
+    top:-85px; 
+    left: 10px;
+}
+
+
+/** 
+* Поле ввода к изображению книги
+*/
+.input_image_book{
+    position: relative;
+    top: -110px;
+    left: 10px;
+}
+
+
+/** 
+* Класс раскрывающихся списков добавления книги
+*/
+.add_book_combobox{
+    position: relative;
+    height: 40px;
+    font-size: 20px;
+    width: 300px;
+}
+
+
+/** 
+* Раскрывающий список выбора категории книги
+*/
+.combobox_category{
+    top: -75px;
+    left: 10px;
+}
+
+
+/** 
+* Раскрывающий список выбора языка книги
+*/
+.combobox_language{
+    top: -45px;
+    left: 10px;
+}
+
+/** 
+* Раскрывающий список выбора языка книги
+*/
+.combobox_year{
+    top: -15px;
+    left: 10px;
+}
+
+
+/** 
+* Контейнер Авторы
+*/
+.add_book_author{
+    position: relative;
+    left: 395px;
+    top:-635px;
+    font-size: 26px;
+    width: 340px;
+    background-color: rgb(22, 22, 22);
+    height: 625px;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Заголовок фамилия автора
+*/
+.surname_author_label{
+    position: relative;
+    top: 5px;
+    left: 15px;
+    width: 300px;
+}
+
+
+/** 
+* Текстовое поле фамилии автора
+*/
+.surname_author_input{
+    position: relative;
+    top: -20px;
+    left: 15px;
+}
+
+
+/**
+* Заголовок имени автора
+*/
+.name_author_label{
+    position: relative;
+    top:-25px;
+    left: 15px;
+}
+
+
+/** 
+* Текстовое поле имени автора
+*/
+.name_author_input{
+    position: relative;
+    top: -50px;
+    left: 15px;
+}
+
+
+/**
+* Заголовок отчества автора
+*/
+.patronymic_author_label{
+    position: relative;
+    top:-55px;
+    left: 15px;
+}
+
+
+/** 
+* Текстовое поле отчества автора
+*/
+.patronymic_author_input{
+    position: relative;
+    top: -80px;
+    left: 15px;
+}
+
+
+/** 
+* Кнопка Добавить нового автора
+*/
+.button_add_new_author{
+    width: 300px;
+    height: 40px;
+    font-size: 21px;
+    left: 15px;
+    top: 355px;
+}
+
+
+/** 
+* Заголовок Список авторов для книги
+*/
+.title_list_authors{
+    left: 15px;
+    top: -35px;
+}
+
+/** 
+* Класс мульти списка добавления книги
+*/
+.field_combobox_add_book{
+    position: relative;
+    width: 300px;
+    height: 60px;
+    overflow: auto;
+    font-size: 18px;
+}
+
+
+/** 
+* Список авторов для книги
+*/
+.field_authors{
+    left: 15px;
+    top:-55px;
+}
+
+
+/** 
+* Раскрывающий список авторов
+*/
+.combobox_authors{
+    top:-35px;
+    left: 15px;
+}
+
+
+/** 
+* Кнопка Добавить автора в список 
+*/
+.button_add_list_author{
+    width: 300px;
+    height: 40px;
+    font-size: 21px;
+    left: 15px;
+    top: 575px;
+}
+
+
+/** 
+* Тэги книги
+*/
+.add_book_tags{
+    position: relative;
+    top:-1285px;
+    left:780px;
+    background-attachment: fixed;
+    font-size: 26px;
+    width: 340px;
+    background-color: rgb(22, 22, 22);
+    height: 455px;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Заголовок Тэги книги, Добавить новый тэг, Название тэга
+*/
+.tag_label{
+    position: relative;
+    top: 5px;
+    left: 15px;
+    width: 300px;
+}
+
+
+/** 
+* Поле ввода нового тэга
+*/
+.name_tag_input{
+    position: relative;
+    top: -20px;
+    left: 15px;
+}
+
+
+/** 
+* Кнопка добавления нового тэга
+*/
+.button_new_tag{
+    width: 300px;
+    height: 40px;
+    font-size: 21px;
+    left: 15px;
+    top: 175px;
+}
+
+
+/** 
+* Заголовок Список тэгов для книги
+*/
+.label_list_tags{
+    position: relative;
+    top: 25px;
+    left: 15px;
+    width: 300px;
+}
+
+
+/** 
+* Список тэгов для книги
+*/
+.field_list_tags{
+    left: 15px;
+    top:5px;
+}
+
+
+/** 
+* Кнопка Добавить тэг в список
+*/
+.button_add_list_tag{
+    width: 300px;
+    height: 40px;
+    font-size: 21px;
+    left: 15px;
+    top: 395px;
+}
+
+
+/** 
+* Раскрывающий список выбора тэга
+*/
+.combobox_tags{
+    top: 20px;
+    left: 15px;
+}
+
+
+/** 
+* Описание книги
+*/
+.description_book{
+    position: relative;
+    top:-1285px;
+    left: 780px;
+    background-attachment: fixed;
+    font-size: 26px;
+    width: 340px;
+    background-color: rgb(22, 22, 22);
+    height: 145px;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(0, 0, 0, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Заголовок Описание книги
+*/
+.description_book_label{
+    left:15px;
+}
+
+
+/**
+* Текстовое поле Описание книги
+*/
+.description_book_input{
+    white-space: pre-wrap; 
+	word-wrap: normal; 
+    position: relative;
+    width: 300px;
+    height: 100px;
+    left:15px;
+    top:-20px; 
+    z-index: 44;
+}
+
+
+/** 
+* Кнопка Добавить книгу
+*/
+.button_create_book{
+    position: relative;
+    top:-1250px;
+    left:870px;
+    width: 250px;
+}

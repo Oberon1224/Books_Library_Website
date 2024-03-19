@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модули моделей таблиц базы данных &mdash; документация Книжная библиотека 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e35015f7"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Модули моделей представления базы данных" href="database.sqlite3_interface.views.html" />
+    <link rel="prev" title="Модули взаимодействия с базой данных" href="database.sqlite3_interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Книжная библиотека
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Основной модуль приложения (main)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Настройки приложения (settings)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="database.sqlite3_interface.html">Модули взаимодействия с базой данных</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Модули моделей таблиц базы данных</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.table">Абстрактная модель таблицы - класс Table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.table.Table"><code class="docutils literal notranslate"><span class="pre">Table</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.author">Модель таблицы author - класс Author</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.author.Author"><code class="docutils literal notranslate"><span class="pre">Author</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.book">Модель таблицы book - класс Book</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.book.Book"><code class="docutils literal notranslate"><span class="pre">Book</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.category">Модель таблицы category - класс Category</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.category.Category"><code class="docutils literal notranslate"><span class="pre">Category</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.language">Модель таблицы language - класс Language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.language.Language"><code class="docutils literal notranslate"><span class="pre">Language</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.list_authors">Модель таблицы list_authors - класс ListAuthors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.list_authors.ListAuthors"><code class="docutils literal notranslate"><span class="pre">ListAuthors</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.list_notes">Модель таблицы list_notes - класс ListNotes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.list_notes.ListNotes"><code class="docutils literal notranslate"><span class="pre">ListNotes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.list_states">Модель таблицы list_states - класс ListStates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.list_states.ListStates"><code class="docutils literal notranslate"><span class="pre">ListStates</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.list_tags">Модель таблицы list_tags - класс ListTags</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.list_tags.ListTags"><code class="docutils literal notranslate"><span class="pre">ListTags</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.note">Модель таблицы note - класс Note</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.note.Note"><code class="docutils literal notranslate"><span class="pre">Note</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.state">Модель таблицы state - класс State</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.state.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.tag">Модель таблицы tag - класс Tag</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.tag.Tag"><code class="docutils literal notranslate"><span class="pre">Tag</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.user">Модель таблицы user - класс User</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.user.User"><code class="docutils literal notranslate"><span class="pre">User</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.sqlite3_interface.tables.year">Модель таблицы year - класс Year</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.sqlite3_interface.tables.year.Year"><code class="docutils literal notranslate"><span class="pre">Year</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="database.sqlite3_interface.views.html">Модули моделей представления базы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.sqlite3_interface.html#module-database.sqlite3_interface.create_db">Класс CreateDataBase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.sqlite3_interface.html#id2">Физическая модель базы данных</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Книжная библиотека</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blueprints.html">Компоненты приложения</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Книжная библиотека</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="database.html">&lt;no title&gt;</a></li>
+          <li class="breadcrumb-item"><a href="database.sqlite3_interface.html">Модули взаимодействия с базой данных</a></li>
+      <li class="breadcrumb-item active">Модули моделей таблиц базы данных</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/database.sqlite3_interface.tables.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Модули моделей таблиц базы данных<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="module-database.sqlite3_interface.tables.table">
+<span id="table"></span><h2>Абстрактная модель таблицы - класс Table<a class="headerlink" href="#module-database.sqlite3_interface.tables.table" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.table.</span></span><span class="sig-name descname"><span class="pre">Table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Абстрактный класс Table - является моделью таблицы базы данных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<p>Атрибуты:
+:self.name_db (str): Имя базы данных</p>
+<dl class="field-list simple">
+<dt class="field-odd">Self.sqlite_connection (sqlite3.Connection)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Соединение с базой данных</p>
+</dd>
+<dt class="field-even">Self.cursor (sqlite3.Cursor)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Курсор базы данных</p>
+</dd>
+<dt class="field-odd">Self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы</p>
+</dd>
+<dt class="field-even">Self.query_last_row (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос получения id последней записи таблицы</p>
+</dd>
+<dt class="field-odd">Self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы</p>
+</dd>
+<dt class="field-even">Self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу</p>
+</dd>
+<dt class="field-odd">Self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки всех записей из таблицы</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.close_connect_db">
+<span class="sig-name descname"><span class="pre">close_connect_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.close_connect_db"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.close_connect_db" title="Link to this definition"></a></dt>
+<dd><p>Функция закрывает соединение с базой данных.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.connect_db">
+<span class="sig-name descname"><span class="pre">connect_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.connect_db"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.connect_db" title="Link to this definition"></a></dt>
+<dd><p>Функция выполняет соединение с базой данных.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.create"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.create" title="Link to this definition"></a></dt>
+<dd><p>Функция выполняет запрос создания представления в базе данных.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.get_data_to_insert">
+<span class="sig-name descname"><span class="pre">get_data_to_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.get_data_to_insert"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.get_data_to_insert" title="Link to this definition"></a></dt>
+<dd><p>Функция получения тестовых данных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list]: Тестовые данные</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.get_last_row">
+<span class="sig-name descname"><span class="pre">get_last_row</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.get_last_row"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.get_last_row" title="Link to this definition"></a></dt>
+<dd><p>Функция получения id последней записи таблицы.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int: id последней записи таблицы</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.insert"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.insert" title="Link to this definition"></a></dt>
+<dd><p>Функция Добавления тестовых данных в таблицу.
+:param *args: Список тестовых данных
+:type *args: list[list]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.insert_data">
+<span class="sig-name descname"><span class="pre">insert_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.insert_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.insert_data" title="Link to this definition"></a></dt>
+<dd><p>Функция подготовки тестовых данных перед добавлением в таблицу.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.select_all">
+<span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.select_all"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.select_all" title="Link to this definition"></a></dt>
+<dd><p>Функция выполняет выборку всех записей из представления базы данных.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат выборки</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.table.Table.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/table.html#Table.update"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.table.Table.update" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения информации в таблице.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>query</strong> (<em>str</em>) – SQS-запрос изменения информации в базе данных</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.author">
+<span id="author-author"></span><h2>Модель таблицы author - класс Author<a class="headerlink" href="#module-database.sqlite3_interface.tables.author" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.author.Author">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.author.</span></span><span class="sig-name descname"><span class="pre">Author</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/author.html#Author"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.author.Author" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы author.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы author</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу author</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы author</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы author</p>
+</dd>
+<dt class="field-odd">self.query_select_on_id_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки фио автора по id книги</p>
+</dd>
+<dt class="field-even">self.query_select_on_full_name (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки id автора по фио автора</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы book (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">author</span>
+<span class="p">(</span><span class="n">id_author</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">surname</span><span class="w"> </span><span class="n">TEXTNULL</span><span class="p">,</span>
+<span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">patronymic</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">author</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">patronymic</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">author</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.author.Author.insert_get_data">
+<span class="sig-name descname"><span class="pre">insert_get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patronymic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/author.html#Author.insert_get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.author.Author.insert_get_data" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления данных в таблицу author</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surname</strong> (<em>str</em>) – Фамилия автора</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Имя автора</p></li>
+<li><p><strong>patronymic</strong> (<em>str</em>) – Отчество автора</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">author</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">surname</span><span class="p">,</span><span class="w"> </span><span class="n">patronymic</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.author.Author.select_on_full_name">
+<span class="sig-name descname"><span class="pre">select_on_full_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patronymic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/author.html#Author.select_on_full_name"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.author.Author.select_on_full_name" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки id автора по фио автора</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surname</strong> (<em>str</em>) – Фамилия автора</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Имя автора</p></li>
+<li><p><strong>patronymic</strong> (<em>str</em>) – Отчество автора</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_full_name):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_author</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">author</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">surname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">patronymic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.author.Author.select_on_id_book">
+<span class="sig-name descname"><span class="pre">select_on_id_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/author.html#Author.select_on_id_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.author.Author.select_on_id_book" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки фио автора по id книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_book</strong> (<em>int</em>) – id книги</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">author</span><span class="p">.</span><span class="n">surname</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">author</span><span class="p">.</span><span class="n">name</span>
+<span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">author</span><span class="p">.</span><span class="n">patronymic</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">fio</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">author</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">list_authors</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">author</span><span class="p">.</span><span class="n">id_author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list_authors</span><span class="p">.</span><span class="n">id_author</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">book</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">list_authors</span><span class="p">.</span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">id_book</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.book">
+<span id="book-book"></span><h2>Модель таблицы book - класс Book<a class="headerlink" href="#module-database.sqlite3_interface.tables.book" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.book.</span></span><span class="sig-name descname"><span class="pre">Book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы book.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы book</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу book</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы book</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы book</p>
+</dd>
+<dt class="field-odd">self.query_last_row (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки последней записи таблицы book</p>
+</dd>
+<dt class="field-even">self.query_select_path_book (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки пути к файлу книги по id книги</p>
+</dd>
+<dt class="field-odd">self.query_select_on_id_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки данных о книге по id книги</p>
+</dd>
+<dt class="field-even">self.query_update_title (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос изменения названия книги</p>
+</dd>
+<dt class="field-odd">self.query_update_page (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос изменения количества страниц книги</p>
+</dd>
+<dt class="field-even">self.query_update_path_book (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос изменения пути к файлу книги</p>
+</dd>
+<dt class="field-odd">self.query_update_path_image (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос изменения пути к изображению книги</p>
+</dd>
+<dt class="field-even">self.query_update_id_category (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос изменения категории книги</p>
+</dd>
+</dl>
+<p>:self.query_update_id_language (str):Запрос изменения языка книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">self.query_update_id_year (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос изменения года издания книги</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы book (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">book</span>
+<span class="p">(</span><span class="n">id_book</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">title</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">page</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">path_book</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">path_image</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_year</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="n">id_language</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="n">id_about</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="n">id_category</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_year</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="k">year</span><span class="p">(</span><span class="n">id_year</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_language</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="k">language</span><span class="p">(</span><span class="n">id_language</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_about</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">about</span><span class="p">(</span><span class="n">id_about</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id_category</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">category</span><span class="p">(</span><span class="n">id_category</span><span class="p">));</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">page</span><span class="p">,</span><span class="w"> </span><span class="n">path_book</span><span class="p">,</span><span class="w"> </span><span class="n">path_image</span><span class="p">,</span><span class="n">id_year</span><span class="p">,</span>
+<span class="n">id_language</span><span class="p">,</span><span class="n">id_about</span><span class="p">,</span><span class="n">id_category</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">,</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">book</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_last_row):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.insert_get_data">
+<span class="sig-name descname"><span class="pre">insert_get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_about</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.insert_get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.insert_get_data" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления данных в таблицу book</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – Название книги</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Количество страниц книги</p></li>
+<li><p><strong>path_book</strong> (<em>str</em>) – Путь к файлу книги</p></li>
+<li><p><strong>path_image</strong> (<em>str</em>) – Путь к изображению книги</p></li>
+<li><p><strong>id_year</strong> (<em>int</em>) – id года книги</p></li>
+<li><p><strong>id_language</strong> (<em>int</em>) – id языка книги</p></li>
+<li><p><strong>id_about</strong> (<em>int</em>) – id описания книги</p></li>
+<li><p><strong>id_category</strong> (<em>int</em>) – id категории книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">page</span><span class="p">,</span><span class="w"> </span><span class="n">path_book</span><span class="p">,</span>
+<span class="w">                </span><span class="n">path_image</span><span class="p">,</span><span class="w"> </span><span class="n">id_year</span><span class="p">,</span><span class="w"> </span><span class="n">id_language</span><span class="p">,</span>
+<span class="w">                </span><span class="n">id_about</span><span class="p">,</span><span class="w"> </span><span class="n">id_category</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.select_on_id_book">
+<span class="sig-name descname"><span class="pre">select_on_id_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.select_on_id_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.select_on_id_book" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки данных о книге по id книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_book</strong> (<em>int</em>) – id книги</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">page</span><span class="p">,</span><span class="w"> </span><span class="n">path_book</span><span class="p">,</span><span class="w"> </span><span class="n">path_image</span><span class="p">,</span><span class="w"> </span><span class="n">id_category</span><span class="p">,</span>
+<span class="n">id_language</span><span class="p">,</span><span class="w"> </span><span class="n">id_year</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.select_path_book">
+<span class="sig-name descname"><span class="pre">select_path_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.select_path_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.select_path_book" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки пути к файлу книги по id книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_book</strong> (<em>int</em>) – id книги</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_path_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">path_book</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_id_category">
+<span class="sig-name descname"><span class="pre">update_id_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_id_category"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_id_category" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения категории книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>category</strong> (<em>str</em>) – категория книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_id_category):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">category</span>
+<span class="w">                                </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_id_language">
+<span class="sig-name descname"><span class="pre">update_id_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_id_language"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_id_language" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения языка книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>language</strong> (<em>str</em>) – язык книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_id_language):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">id_language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_language</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">language</span>
+<span class="w">                              </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_id_year">
+<span class="sig-name descname"><span class="pre">update_id_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_id_year"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_id_year" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения года издания книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>str</em>) – год книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_id_year):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">id_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_year</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">year</span>
+<span class="w">                                    </span><span class="k">WHERE</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_page">
+<span class="sig-name descname"><span class="pre">update_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_page"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_page" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения количества страниц книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page</strong> (<em>str</em>) – Количество страниц книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id  книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_page):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_path_book">
+<span class="sig-name descname"><span class="pre">update_path_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_path_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_path_book" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения пути к файлу книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_book</strong> (<em>str</em>) – Путь к файлу книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_path_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">path_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_path_image">
+<span class="sig-name descname"><span class="pre">update_path_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_path_image"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_path_image" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения пути к изображению книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_image</strong> (<em>str</em>) – Путь к изображению книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_path_image):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">path_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.book.Book.update_title">
+<span class="sig-name descname"><span class="pre">update_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/book.html#Book.update_title"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.book.Book.update_title" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения названия книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – Название книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id  книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_title):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.category">
+<span id="category-category"></span><h2>Модель таблицы category - класс Category<a class="headerlink" href="#module-database.sqlite3_interface.tables.category" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.category.Category">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.category.</span></span><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/category.html#Category"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.category.Category" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы category</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу category</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы category</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы category</p>
+</dd>
+<dt class="field-odd">self.query_select_id_by_category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки id категории по названию категории из таблицы category</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы category (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">category</span>
+<span class="p">(</span><span class="n">id_category</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">category</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">category</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.category.Category.select_id_by_category">
+<span class="sig-name descname"><span class="pre">select_id_by_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/category.html#Category.select_id_by_category"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.category.Category.select_id_by_category" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки id категории по названию категории из таблицы category</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>category</strong> (<em>int</em>) – Название категории</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_id_by_category):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_category</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">category</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.language">
+<span id="language-language"></span><h2>Модель таблицы language - класс Language<a class="headerlink" href="#module-database.sqlite3_interface.tables.language" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.language.Language">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.language.</span></span><span class="sig-name descname"><span class="pre">Language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/language.html#Language"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.language.Language" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы language.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы language</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу language</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы language</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы language</p>
+</dd>
+<dt class="field-odd">self.query_select_id_by_language (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки id языка по названию языку из таблицы language</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы language (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">language</span>
+<span class="p">(</span><span class="n">id_language</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">language</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">language</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.language.Language.select_id_by_language">
+<span class="sig-name descname"><span class="pre">select_id_by_language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/language.html#Language.select_id_by_language"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.language.Language.select_id_by_language" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки id языка по названию языку из таблицы language</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>language</strong> (<em>int</em>) – Название языка</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_id_by_language):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_language</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">language</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.list_authors">
+<span id="list-authors-listauthors"></span><h2>Модель таблицы list_authors - класс ListAuthors<a class="headerlink" href="#module-database.sqlite3_interface.tables.list_authors" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_authors.ListAuthors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.list_authors.</span></span><span class="sig-name descname"><span class="pre">ListAuthors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_authors.html#ListAuthors"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_authors.ListAuthors" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы list_authors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы list_authors</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу list_authors</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы list_authors</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы list_authors</p>
+</dd>
+<dt class="field-odd">self.query_select_on_id_book_and_author (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки id списка по id автора и id книги из таблицы list_authors</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы list_authors (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">list_authors</span>
+<span class="p">(</span><span class="n">id_list_authors</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_author</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_book</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_book</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">books</span><span class="p">(</span><span class="n">id_book</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_author</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">author</span><span class="p">(</span><span class="n">id_author</span><span class="p">));</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_authors</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_authors.ListAuthors.insert_get_date">
+<span class="sig-name descname"><span class="pre">insert_get_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_author</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_authors.html#ListAuthors.insert_get_date"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_authors.ListAuthors.insert_get_date" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления данных в таблицу list_authors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_author</strong> (<em>int</em>) – id автора</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">list_authors</span><span class="p">(</span><span class="n">id_author</span><span class="p">,</span><span class="w"> </span><span class="n">id_book</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_authors.ListAuthors.select_on_id_book_and_author">
+<span class="sig-name descname"><span class="pre">select_on_id_book_and_author</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_author</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_authors.html#ListAuthors.select_on_id_book_and_author"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_authors.ListAuthors.select_on_id_book_and_author" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки id списка по id автора и id книги из таблицы list_authors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_author</strong> (<em>int</em>) – id автора</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_book_and_author):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_list_authors</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_authors</span>
+<span class="k">WHERE</span><span class="w">  </span><span class="n">id_author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.list_notes">
+<span id="list-notes-listnotes"></span><h2>Модель таблицы list_notes - класс ListNotes<a class="headerlink" href="#module-database.sqlite3_interface.tables.list_notes" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_notes.ListNotes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.list_notes.</span></span><span class="sig-name descname"><span class="pre">ListNotes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_notes.html#ListNotes"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_notes.ListNotes" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы list_notes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы list_notes</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу list_notes</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы list_notes</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы list_notes</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы list_notes (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">list_notes</span>
+<span class="p">(</span><span class="n">id_list_notes</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_note</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_book</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_user</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_book</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">book</span><span class="p">(</span><span class="n">id_book</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_user</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">id_user</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_note</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">note</span><span class="p">(</span><span class="n">id_note</span><span class="p">));</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_notes</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_notes.ListNotes.insert_get_data">
+<span class="sig-name descname"><span class="pre">insert_get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_notes.html#ListNotes.insert_get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_notes.ListNotes.insert_get_data" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления данных в таблицу list_notes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_note</strong> (<em>int</em>) – id заметки</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">list_notes</span><span class="p">(</span><span class="n">id_note</span><span class="p">,</span><span class="w"> </span><span class="n">id_book</span><span class="p">,</span><span class="w"> </span><span class="n">id_user</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.list_states">
+<span id="list-states-liststates"></span><h2>Модель таблицы list_states - класс ListStates<a class="headerlink" href="#module-database.sqlite3_interface.tables.list_states" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_states.ListStates">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.list_states.</span></span><span class="sig-name descname"><span class="pre">ListStates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_states.html#ListStates"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_states.ListStates" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы list_states.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы list_states</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу list_states</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы list_states</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы list_states</p>
+</dd>
+<dt class="field-odd">self.query_select_state_page (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки страницы для закладки по id книги и id пользователя</p>
+</dd>
+<dt class="field-even">self.query_update_state_page (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос изменения страницы закладки книги</p>
+</dd>
+<dt class="field-odd">self.query_update_state (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос изменения статуса книги</p>
+</dd>
+<dt class="field-even">self.query_select_user_books (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки книг пользователя</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы list_states (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">list_states</span>
+<span class="p">(</span><span class="n">id_list_states</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">page</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_state</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_book</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_user</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_book</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">book</span><span class="p">(</span><span class="n">id_book</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_user</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">id_user</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_state</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="k">state</span><span class="p">(</span><span class="n">id_state</span><span class="p">));</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_states</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_states.ListStates.insert_get_data">
+<span class="sig-name descname"><span class="pre">insert_get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_states.html#ListStates.insert_get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_states.ListStates.insert_get_data" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления данных в таблицу list_states</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page</strong> (<em>int</em>) – Номер страницы</p></li>
+<li><p><strong>id_state</strong> (<em>int</em>) – id статуса книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_state):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">list_states</span><span class="p">(</span><span class="n">page</span><span class="p">,</span><span class="w"> </span><span class="n">id_state</span><span class="p">,</span><span class="w"> </span><span class="n">id_book</span><span class="p">,</span><span class="w"> </span><span class="n">id_user</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_states.ListStates.select_state_page">
+<span class="sig-name descname"><span class="pre">select_state_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_states.html#ListStates.select_state_page"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_states.ListStates.select_state_page" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки страницы для закладки по id книги и id пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_state_page):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_states</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">id_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_states.ListStates.select_user_books">
+<span class="sig-name descname"><span class="pre">select_user_books</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_states.html#ListStates.select_user_books"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_states.ListStates.select_user_books" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки книг пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>login</strong> (<em>int</em>) – Логин пользователя</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_user_books):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_states</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">list_states</span><span class="p">.</span><span class="n">id_user</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">id_user</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="k">state</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">state</span><span class="p">.</span><span class="n">id_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list_states</span><span class="p">.</span><span class="n">id_state</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">user</span><span class="p">.</span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_states.ListStates.update_state">
+<span class="sig-name descname"><span class="pre">update_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_states.html#ListStates.update_state"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_states.ListStates.update_state" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения статуса книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_state</strong> (<em>int</em>) – id статуса книги</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_state):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">list_states</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">id_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">id_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_states.ListStates.update_state_page">
+<span class="sig-name descname"><span class="pre">update_state_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_states.html#ListStates.update_state_page"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_states.ListStates.update_state_page" title="Link to this definition"></a></dt>
+<dd><p>Функция изменения страницы закладки книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>new_page</strong> (<em>int</em>) – Новая страница</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_update_state_page):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">list_states</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">id_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.list_tags">
+<span id="list-tags-listtags"></span><h2>Модель таблицы list_tags - класс ListTags<a class="headerlink" href="#module-database.sqlite3_interface.tables.list_tags" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_tags.ListTags">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.list_tags.</span></span><span class="sig-name descname"><span class="pre">ListTags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_tags.html#ListTags"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_tags.ListTags" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы list_tags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы list_tags</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу list_tags</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы list_tags</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы list_tags</p>
+</dd>
+<dt class="field-odd">self.query_select_on_id_book_and_tag (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки id по id книги и id тэгу</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы list_tags (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">list_tags</span>
+<span class="p">(</span><span class="n">id_list_tags</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_tag</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">id_book</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_book</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">book</span><span class="p">(</span><span class="n">id_book</span><span class="p">),</span>
+<span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">id_tag</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">id_tag</span><span class="p">));</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_tags</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_tags.ListTags.insert_get_date">
+<span class="sig-name descname"><span class="pre">insert_get_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_tags.html#ListTags.insert_get_date"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_tags.ListTags.insert_get_date" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления данных в таблицу</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_tag</strong> (<em>int</em>) – id тэга</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">list_tags</span><span class="p">(</span><span class="n">id_tag</span><span class="p">,</span><span class="w"> </span><span class="n">id_book</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.list_tags.ListTags.select_on_id_book_and_tag">
+<span class="sig-name descname"><span class="pre">select_on_id_book_and_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/list_tags.html#ListTags.select_on_id_book_and_tag"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.list_tags.ListTags.select_on_id_book_and_tag" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки id по id книги и id тэгу</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_tag</strong> (<em>int</em>) – id тэга</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_book_and_tag):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_list_tags</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_tags</span>
+<span class="k">WHERE</span><span class="w">  </span><span class="n">id_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.note">
+<span id="note-note"></span><h2>Модель таблицы note - класс Note<a class="headerlink" href="#module-database.sqlite3_interface.tables.note" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.note.Note">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.note.</span></span><span class="sig-name descname"><span class="pre">Note</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/note.html#Note"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.note.Note" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы note.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы note</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу note</p>
+</dd>
+<dt class="field-odd">self.query_last_row (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Получегие id последней записи таблицы note</p>
+</dd>
+<dt class="field-even">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-even"><p>Тестовые данные для таблицы note</p>
+</dd>
+<dt class="field-odd">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки всех записей из таблицы note</p>
+</dd>
+<dt class="field-even">self.query_select_on_id_book (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки заметок для книги по id книги</p>
+</dd>
+<dt class="field-odd">self.query_select_on_id_user_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки заметок для книги для заданного пользователя</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы note (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">note</span>
+<span class="p">(</span><span class="n">id_note</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">text_note</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">note</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_last_row):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_note</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">id_note</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.note.Note.insert_get_data">
+<span class="sig-name descname"><span class="pre">insert_get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_note</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/note.html#Note.insert_get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.note.Note.insert_get_data" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления заметки для книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text_note</strong> (<em>int</em>) – Текст заметки</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">note</span><span class="p">(</span><span class="n">text_note</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.note.Note.select_on_id_book">
+<span class="sig-name descname"><span class="pre">select_on_id_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/note.html#Note.select_on_id_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.note.Note.select_on_id_book" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки заметок для книги по id книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_book</strong> (<em>int</em>) – id книги</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">note</span><span class="p">.</span><span class="n">id_note</span><span class="p">,</span><span class="w"> </span><span class="n">note</span><span class="p">.</span><span class="n">text_note</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">note</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">list_notes</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">list_notes</span><span class="p">.</span><span class="n">id_note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">note</span><span class="p">.</span><span class="n">id_note</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">list_notes</span><span class="p">.</span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">id_book</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.note.Note.select_on_id_user_book">
+<span class="sig-name descname"><span class="pre">select_on_id_user_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/note.html#Note.select_on_id_user_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.note.Note.select_on_id_user_book" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки заметок для книги для заданного пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_user_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_note</span>
+<span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_note</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_notes</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">id_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[str]]: Результат выборки</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.state">
+<span id="state-state"></span><h2>Модель таблицы state - класс State<a class="headerlink" href="#module-database.sqlite3_interface.tables.state" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.state.State">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.state.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/state.html#State"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.state.State" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы state</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу state</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы state</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы state</p>
+</dd>
+<dt class="field-odd">self.query_select_state_name (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки статуса книги для пользователя</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы state (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">state</span>
+<span class="p">(</span><span class="n">id_state</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">state_name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">state</span><span class="p">(</span><span class="n">state_name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">state</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.state.State.select_state_name">
+<span class="sig-name descname"><span class="pre">select_state_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/state.html#State.select_state_name"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.state.State.select_state_name" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки статуса книги для пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_user</strong> (<em>int</em>) – id пользователя</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_state_name):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">state_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">state</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_state</span>
+<span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_state</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">list_states</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>state_name: Статус книги для пользователя</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.tag">
+<span id="tag-tag"></span><h2>Модель таблицы tag - класс Tag<a class="headerlink" href="#module-database.sqlite3_interface.tables.tag" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.tag.Tag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.tag.</span></span><span class="sig-name descname"><span class="pre">Tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/tag.html#Tag"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.tag.Tag" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы tag</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу tag</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы tag</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы tag</p>
+</dd>
+<dt class="field-odd">self.query_select_on_id_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки списка тэгов для книги по id книги</p>
+</dd>
+<dt class="field-even">self.query_select_id_on_tag (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки id тэга по названию тэга</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы tag (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">tag</span>
+<span class="p">(</span><span class="n">id_tag</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">tag_name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">tag_name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.tag.Tag.insert_get_data">
+<span class="sig-name descname"><span class="pre">insert_get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/tag.html#Tag.insert_get_data"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.tag.Tag.insert_get_data" title="Link to this definition"></a></dt>
+<dd><p>Функция добавления тэга в базу данных</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tag_name</strong> (<em>int</em>) – название тэга</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">tag</span><span class="p">(</span><span class="n">tag_name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.tag.Tag.select_id_on_tag">
+<span class="sig-name descname"><span class="pre">select_id_on_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/tag.html#Tag.select_id_on_tag"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.tag.Tag.select_id_on_tag" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки id тэга по названию тэга</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tag_name</strong> (<em>int</em>) – название тэга</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_id_on_tag):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_tag</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tag_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат выборки</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.tag.Tag.select_on_id_book">
+<span class="sig-name descname"><span class="pre">select_on_id_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/tag.html#Tag.select_on_id_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.tag.Tag.select_on_id_book" title="Link to this definition"></a></dt>
+<dd><p>Функция выборки названия тэга по id книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_book</strong> (<em>int</em>) – id книги</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_on_id_book):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">tag_name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tag</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">list_tags</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">tag</span><span class="p">.</span><span class="n">id_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list_tags</span><span class="p">.</span><span class="n">id_tag</span>
+<span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">list_tags</span><span class="p">.</span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">id_book</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">book</span><span class="p">.</span><span class="n">id_book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат выборки</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.user">
+<span id="user-user"></span><h2>Модель таблицы user - класс User<a class="headerlink" href="#module-database.sqlite3_interface.tables.user" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.user.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.user.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/user.html#User"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.user.User" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы user</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу user</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы user</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы user</p>
+</dd>
+<dt class="field-odd">self.query_select_id_on_login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки id пользователя с заданным логином</p>
+</dd>
+<dt class="field-even">self.query_select_password_on_login (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки пароля пользователя с заданным логином</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы user (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">user</span>
+<span class="p">(</span><span class="n">id_user</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">login</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="n">password</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">login</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.user.User.select_id_on_login">
+<span class="sig-name descname"><span class="pre">select_id_on_login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/user.html#User.select_id_on_login"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.user.User.select_id_on_login" title="Link to this definition"></a></dt>
+<dd><p>Функция получения id пользователя по логину пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>login</strong> (<em>int</em>) – Логин пользователя</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_id_on_login):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_user</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат выборки</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.user.User.select_password_on_login">
+<span class="sig-name descname"><span class="pre">select_password_on_login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/user.html#User.select_password_on_login"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.user.User.select_password_on_login" title="Link to this definition"></a></dt>
+<dd><p>Функция получения пароля пользователя по логину пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>login</strong> (<em>int</em>) – Логин пользователя</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_id_on_login):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат выборки</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database.sqlite3_interface.tables.year">
+<span id="year-year"></span><h2>Модель таблицы year - класс Year<a class="headerlink" href="#module-database.sqlite3_interface.tables.year" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.year.Year">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.sqlite3_interface.tables.year.</span></span><span class="sig-name descname"><span class="pre">Year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/year.html#Year"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.year.Year" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="#database.sqlite3_interface.tables.table.Table" title="database.sqlite3_interface.tables.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a></p>
+<p>Класс является моделью таблицы year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name_db</strong> (<em>str</em>) – Имя базы данных</p>
+</dd>
+</dl>
+<dl>
+<dt>Атрибуты:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">self.create_query (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос создания таблицы year</p>
+</dd>
+<dt class="field-even">self.query_insert (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос добавления данных в таблицу year</p>
+</dd>
+<dt class="field-odd">self.data_to_db (list[list[str]])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Тестовые данные для таблицы year</p>
+</dd>
+<dt class="field-even">self.query_select_all (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Запрос выборки всех записей из таблицы year</p>
+</dd>
+<dt class="field-odd">self.query_select_id_by_year (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Запрос выборки id года с заданным годом</p>
+</dd>
+</dl>
+</dd>
+<dt>SQL-запрос создания таблицы year (self.create_query):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="k">year</span>
+<span class="p">(</span><span class="n">id_year</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="w">  </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="k">year</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_insert):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">year</span><span class="p">(</span><span class="k">year</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt>SQL-запрос (self.query_select_all):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">year</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="database.sqlite3_interface.tables.year.Year.select_id_by_year">
+<span class="sig-name descname"><span class="pre">select_id_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/database/sqlite3_interface/tables/year.html#Year.select_id_by_year"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#database.sqlite3_interface.tables.year.Year.select_id_by_year" title="Link to this definition"></a></dt>
+<dd><p>Функция получения id года по заданному году</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>year</strong> (<em>int</em>) – Год издания</p>
+</dd>
+</dl>
+<dl>
+<dt>SQL-запрос (self.query_select_id_by_year):</dt><dd><div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id_year</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Результат выборки</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="database.sqlite3_interface.html" class="btn btn-neutral float-left" title="Модули взаимодействия с базой данных" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="database.sqlite3_interface.views.html" class="btn btn-neutral float-right" title="Модули моделей представления базы данных" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Бушуев Дмитрий. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

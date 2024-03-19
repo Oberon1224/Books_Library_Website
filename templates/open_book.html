@@ -1,0 +1,69 @@
+{% block content %}
+<html>
+    {% include 'header.html' %}
+    <script> var id_book = '{{id_book}}'; </script>
+    <!--Контейнер книги-->
+    <div id="book_window"  class="book_window_class">
+        <!--Документ книги-->
+        <!--@param path - путь к файлу книги-->
+        <!--@function book.select_path_book(id_book) - выборка пути к файлу книги по id книги-->
+        {% set path = book.select_path_book(id_book) %}
+        <iframe id="frame_book" class="frame_book_class" src='{{path[0][0]}}'></iframe>
+        <!--Контейнер меню открытой книги-->
+        <div id="menu_book_id" class="menu_book_read">
+            <input id="scale_size" class="low_button book_button_open" type="button" value="Во весь экран"  >
+            <input id="return_size" class="low_button book_button_open" type="button" value="Свернуть окно" >
+            <input id="show_notes" class="low_button book_button_open" type="button" value="Заметки"  >
+            <input id="btn_show_marker" class="low_button book_button_open" type="button" value="Закладка"  >  
+            <!--Контейнер закладки-->
+            <div id="#container_marker_id" class = "container_marker" style="display: inline-flex;">
+                <!--Поле ввода страницы закладки-->
+                <!--@param page - страница закладки-->
+                <!--@function list_states.select_state_page(id_book, id_user) - выборка страницы заклакди по id книги и id пользоватля-->
+                {% set page = list_states.select_state_page(id_book, id_user) %}
+                <input id="value_marker" class=" input_marker" type="text" value={{page[0][0]}}>
+                <!--Кнопка изменения страницы закладки-->   
+                <form>
+                    <input id="btn_change_marker" class="low_button btn_marker" type="submit" value="Изменить">  
+                </form>   
+            </div> 
+            <!--Контейнер заметок-->
+            <div class="container_notes">
+                <!--Контейнер таблицы-->
+                <div class="container_table">
+                    <!--Таблица заметок-->    
+                    <table class="table_notes"> 
+                        <!--Шапка таблицы--> 
+                        <tr class="row_table">
+                            <th class="border_tables id_note">ID </th>
+                            <th class="border_tables name_note">Заметка</th>
+                        </tr>
+                        <!--Записи таблицы--> 
+                        <!--@param note - заметка книги-->
+                        <!--@function notes.select_on_id_user_book(id_book, id_user) - выборка заметок книги по id книги и id пользоватля-->
+                        <!--@param n[0] - id заметки книги-->
+                        <!--@param n[1] - текст заметки книги-->
+                        {% set note = notes.select_on_id_user_book(id_book, id_user) %}
+                        {% for n in note %}
+                        <tr class="row_table">
+                            <td class="border_tables id_note">{{n[0]}}</td>
+                            <td class="border_tables name_note">{{n[1]}}</td>
+                        </tr>       
+                        {% endfor %}                                                      
+                    </table>
+                </div>
+                <!--Контейнер добавления заметок--> 
+                <div class="add_notes">
+                    <!--Кнопка Добавить заметку--> 
+                    <form>
+                        <input id="add_note_button" type="submit" class="low_button btn_add_note" value="Добавить заметку">
+                    </form>
+                    <!--Поле ввода заметки--> 
+                    <textarea id="input_field_note" class="field_note"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'style.html' %}
+</html>
+{% endblock %}

@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Компоненты приложения &mdash; документация Книжная библиотека 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e35015f7"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=29b1f277"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Книжная библиотека" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Книжная библиотека
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Основной модуль приложения (main)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Настройки приложения (settings)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.sqlite3_interface.html">Модули взаимодействия с базой данных</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Книжная библиотека</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Компоненты приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#add-to-database">Компонент add_to_database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.add_to_database.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.add_to_database.add_file"><code class="docutils literal notranslate"><span class="pre">add_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.add_to_database.add_new_author"><code class="docutils literal notranslate"><span class="pre">add_new_author()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.add_to_database.add_new_tag"><code class="docutils literal notranslate"><span class="pre">add_new_tag()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.add_to_database.change_add_author"><code class="docutils literal notranslate"><span class="pre">change_add_author()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.add_to_database.change_add_tag"><code class="docutils literal notranslate"><span class="pre">change_add_tag()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#auth">Компонент auth</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.auth.exit"><code class="docutils literal notranslate"><span class="pre">exit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.auth.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.auth.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#book-read">Компонент book_read</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.book_read.add_note"><code class="docutils literal notranslate"><span class="pre">add_note()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.book_read.change_page_marker"><code class="docutils literal notranslate"><span class="pre">change_page_marker()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.book_read.open_book"><code class="docutils literal notranslate"><span class="pre">open_book()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#change-book-information">Компонент change_book_information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_book"><code class="docutils literal notranslate"><span class="pre">change_book()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_category"><code class="docutils literal notranslate"><span class="pre">change_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_description"><code class="docutils literal notranslate"><span class="pre">change_description()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_language"><code class="docutils literal notranslate"><span class="pre">change_language()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_page"><code class="docutils literal notranslate"><span class="pre">change_page()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_path_book"><code class="docutils literal notranslate"><span class="pre">change_path_book()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_path_image"><code class="docutils literal notranslate"><span class="pre">change_path_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_title"><code class="docutils literal notranslate"><span class="pre">change_title()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_book_information.change_year"><code class="docutils literal notranslate"><span class="pre">change_year()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#change-state">Компонент change_state</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_state.change_end_read"><code class="docutils literal notranslate"><span class="pre">change_end_read()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_state.change_in_read"><code class="docutils literal notranslate"><span class="pre">change_in_read()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.change_state.change_on_favorite"><code class="docutils literal notranslate"><span class="pre">change_on_favorite()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#function">Компонент function</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.function.check_book_on_user"><code class="docutils literal notranslate"><span class="pre">check_book_on_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.function.formation_authors"><code class="docutils literal notranslate"><span class="pre">formation_authors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.function.formation_tags"><code class="docutils literal notranslate"><span class="pre">formation_tags()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.function.parser_html_ajax"><code class="docutils literal notranslate"><span class="pre">parser_html_ajax()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.function.parser_list_in_list"><code class="docutils literal notranslate"><span class="pre">parser_list_in_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#search-filter">Компонент search_filter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.search_filter.filter"><code class="docutils literal notranslate"><span class="pre">filter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.search_filter.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#select-books">Компонент select_books</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.select_books.article"><code class="docutils literal notranslate"><span class="pre">article()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.select_books.books"><code class="docutils literal notranslate"><span class="pre">books()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.select_books.joornal"><code class="docutils literal notranslate"><span class="pre">joornal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#select-books-state">Компонент select_books_state</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.select_books_state.end_read"><code class="docutils literal notranslate"><span class="pre">end_read()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.select_books_state.favorites"><code class="docutils literal notranslate"><span class="pre">favorites()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.select_books_state.on_reading"><code class="docutils literal notranslate"><span class="pre">on_reading()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#style">Компонент style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.style.style1"><code class="docutils literal notranslate"><span class="pre">style1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.style.style2"><code class="docutils literal notranslate"><span class="pre">style2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.style.style3"><code class="docutils literal notranslate"><span class="pre">style3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.style.style4"><code class="docutils literal notranslate"><span class="pre">style4()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints.style.style5"><code class="docutils literal notranslate"><span class="pre">style5()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Книжная библиотека</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Книжная библиотека</a></li>
+      <li class="breadcrumb-item active">Компоненты приложения</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/blueprints.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Компоненты приложения<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="add-to-database">
+<h2>Компонент add_to_database<a class="headerlink" href="#add-to-database" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначен для добавления книги.</div>
+</div>
+<dl class="py function" id="module-blueprints.add_to_database">
+<dt class="sig sig-object py" id="blueprints.add_to_database.add">
+<span class="sig-prename descclassname"><span class="pre">blueprints.add_to_database.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/add_to_database.html#add"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.add_to_database.add" title="Link to this definition"></a></dt>
+<dd><p>Переход на страницу добавления книги.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if current_app.config<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Переход на страницу add_file.html</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>Переход на страницу index.html</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">add_file.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу добавления книги если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">index.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.add_to_database.add_file">
+<span class="sig-prename descclassname"><span class="pre">blueprints.add_to_database.</span></span><span class="sig-name descname"><span class="pre">add_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints/add_to_database.html#add_file"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.add_to_database.add_file" title="Link to this definition"></a></dt>
+<dd><p>Запрос добавления книги в базу данных.
+В данной функции выполняется многоуровневая проверка каждой переменной с выполнением
+запросов добавления согласно связям между таблицами базами данных.
+Сначала выполняется добавление книги с необходимой для нее информации,
+затем выполняется добавление списков авторов и тэгов с заранне подоготовленными данными
+для добавления.</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">title (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Название новой книги</p>
+</dd>
+<dt class="field-even">page (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Имя нового автора</p>
+</dd>
+<dt class="field-odd">path_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отчество нового автора</p>
+</dd>
+<dt class="field-even">path_image (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Отчество нового автора</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отчество нового автора</p>
+</dd>
+<dt class="field-even">language (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Отчество нового автора</p>
+</dd>
+<dt class="field-odd">year (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отчество нового автора</p>
+</dd>
+<dt class="field-even">authors (list[str])<span class="colon">:</span></dt>
+<dd class="field-even"><p>Список авторов для новой книги</p>
+</dd>
+<dt class="field-odd">tags (list[str])<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Список тэгов для новой книги</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.add_to_database.add_new_author">
+<span class="sig-prename descclassname"><span class="pre">blueprints.add_to_database.</span></span><span class="sig-name descname"><span class="pre">add_new_author</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints/add_to_database.html#add_new_author"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.add_to_database.add_new_author" title="Link to this definition"></a></dt>
+<dd><p>Запрос добавления нового автора в базу данных</p>
+<dl>
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">surname (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Фамилия нового автора</p>
+</dd>
+<dt class="field-even">name (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Имя нового автора</p>
+</dd>
+<dt class="field-odd">patronymic (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Отчество нового автора</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><p>if not current_app.config: выполняется запрос insert</p>
+<p>else: ничего не выполняется</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает пустую строку</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.add_to_database.add_new_tag">
+<span class="sig-prename descclassname"><span class="pre">blueprints.add_to_database.</span></span><span class="sig-name descname"><span class="pre">add_new_tag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints/add_to_database.html#add_new_tag"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.add_to_database.add_new_tag" title="Link to this definition"></a></dt>
+<dd><p>Запрос добавления нового тэга в базу данных</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">tag (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новый тэг</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if not current_app.config<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос insert</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.add_to_database.change_add_author">
+<span class="sig-prename descclassname"><span class="pre">blueprints.add_to_database.</span></span><span class="sig-name descname"><span class="pre">change_add_author</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/blueprints/add_to_database.html#change_add_author"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.add_to_database.change_add_author" title="Link to this definition"></a></dt>
+<dd><p>Запрос добавления автора/авторов к книге.
+В данной функции выполняется многоуровневая проверка каждой переменной,
+формируется список для добавления и затем выполняется запрос insert.</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">id_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Фамилия нового автора</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Список авторов</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.add_to_database.change_add_tag">
+<span class="sig-prename descclassname"><span class="pre">blueprints.add_to_database.</span></span><span class="sig-name descname"><span class="pre">change_add_tag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/blueprints/add_to_database.html#change_add_tag"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.add_to_database.change_add_tag" title="Link to this definition"></a></dt>
+<dd><p>Запрос добавления тэга/тэгов к книге.
+В данной функции выполняется многоуровневая проверка каждой переменной,
+формируется список для добавления и затем выполняется запрос insert.</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">id_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Фамилия нового автора</p>
+</dd>
+<dt class="field-even">tags (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Список тэгов</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="auth">
+<h2>Компонент auth<a class="headerlink" href="#auth" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначен для авторизации.</div>
+</div>
+<dl class="py function" id="module-blueprints.auth">
+<dt class="sig sig-object py" id="blueprints.auth.exit">
+<span class="sig-prename descclassname"><span class="pre">blueprints.auth.</span></span><span class="sig-name descname"><span class="pre">exit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/auth.html#exit"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.auth.exit" title="Link to this definition"></a></dt>
+<dd><p>Выход из личного кабинета</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">current_app.config[„USER_LOGIN“]  (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>имя пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template:  Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.auth.index">
+<span class="sig-prename descclassname"><span class="pre">blueprints.auth.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/auth.html#index"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.auth.index" title="Link to this definition"></a></dt>
+<dd><p>Переход на страницу авторизации</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template:  Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.auth.main">
+<span class="sig-prename descclassname"><span class="pre">blueprints.auth.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/auth.html#main"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.auth.main" title="Link to this definition"></a></dt>
+<dd><p>Переход на главную страницу</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">current_app.config[„USER_LOGIN“] (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>имя пользователя</p>
+</dd>
+<dt class="field-even">login_enter (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Введенный логин</p>
+</dd>
+<dt class="field-odd">password_enter (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Введенный пароль</p>
+</dd>
+<dt class="field-even">password_user (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Пароль пользователя из базы данных</p>
+</dd>
+</dl>
+</dd>
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">language (Language)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-odd">year (Year)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных year</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><p>:if login_enter and password_enter and
+current_app.config[„USER“].select_password_on_login(login_enter): Выборка пароля из базы данных для пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">if password_user<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Допуск к следующей проверки</p>
+</dd>
+<dt class="field-even">if password_user == password_enter<span class="colon">:</span></dt>
+<dd class="field-even"><p>Сохранение логина в переменной приложения</p>
+</dd>
+<dt class="field-odd">if current_app.config[„USER_LOGIN“]<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Переход на страницу main.html</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>Переход на страницу index.html</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template:  Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="book-read">
+<h2>Компонент book_read<a class="headerlink" href="#book-read" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначен для чтения книги.</div>
+</div>
+<dl class="py function" id="module-blueprints.book_read">
+<dt class="sig sig-object py" id="blueprints.book_read.add_note">
+<span class="sig-prename descclassname"><span class="pre">blueprints.book_read.</span></span><span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/book_read.html#add_note"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.book_read.add_note" title="Link to this definition"></a></dt>
+<dd><p>Запрос добавления заметки</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">text_note (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новая заметка</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if id_last_note and id_book and id_user<span class="colon">:</span></dt>
+<dd class="field-odd"><p>добавляется новая заметка для книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется, одна из переменных со значением null</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.book_read.change_page_marker">
+<span class="sig-prename descclassname"><span class="pre">blueprints.book_read.</span></span><span class="sig-name descname"><span class="pre">change_page_marker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/book_read.html#change_page_marker"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.book_read.change_page_marker" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения страницы закладки</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">new_page (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новая страница закладки</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if id_book and id_user and new_page<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для таблицы list_states</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.book_read.open_book">
+<span class="sig-prename descclassname"><span class="pre">blueprints.book_read.</span></span><span class="sig-name descname"><span class="pre">open_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/book_read.html#open_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.book_read.open_book" title="Link to this definition"></a></dt>
+<dd><p>Переход на страницу открытия книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if check_book_on_user<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для таблицы list_states</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>выполняется запрос insert для таблицы list_states</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">open_book.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу чтения книги</p>
+</dd>
+<dt class="field-even">index.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="change-book-information">
+<h2>Компонент change_book_information<a class="headerlink" href="#change-book-information" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначен для изменения информации о книге.</div>
+</div>
+<dl class="py function" id="module-blueprints.change_book_information">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_book">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_book</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_book" title="Link to this definition"></a></dt>
+<dd><p>Переход на страницу изменения книги</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if current_app.config<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Переход на страницу change_book.html</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>Переход на страницу index.html</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">change_book.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу изменения книги</p>
+</dd>
+<dt class="field-even">index.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_category">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_category"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_category" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения категории книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новая категория книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if category and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_description">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_description</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_description"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_description" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения описания книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">description (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новое описание книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if language and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_language">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_language</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_language"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_language" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения языка книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">language (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новый язык книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if language and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_page">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_page</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_page"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_page" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения количества страниц книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">page (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новое количество страниц книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if page and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_path_book">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_path_book</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_path_book"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_path_book" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения пути к файлу книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">path_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новый путь к файлу книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if path_book and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_path_image">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_path_image</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_path_image"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_path_image" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения пути к изображению книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">path_book (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новый путь к изображению книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Conditions:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if path_image and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_title">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_title</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_title"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_title" title="Link to this definition"></a></dt>
+<dd><p>Запрос на изменение названия книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">title (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новое название книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if title and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_book_information.change_year">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_book_information.</span></span><span class="sig-name descname"><span class="pre">change_year</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_book_information.html#change_year"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_book_information.change_year" title="Link to this definition"></a></dt>
+<dd><p>Запрос изменения года издания книги</p>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">year (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Новый год издания книги</p>
+</dd>
+<dt class="field-even">id_book (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>id книги</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if language and id_book<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для выбранной книги</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>ничего не выполняется</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="change-state">
+<h2>Компонент change_state<a class="headerlink" href="#change-state" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначен для изменения статуса книги.</div>
+</div>
+<dl class="py function" id="module-blueprints.change_state">
+<dt class="sig sig-object py" id="blueprints.change_state.change_end_read">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_state.</span></span><span class="sig-name descname"><span class="pre">change_end_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_state.html#change_end_read"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_state.change_end_read" title="Link to this definition"></a></dt>
+<dd><p>Запрос для добавление/изменения книги в прочитанное/на прочитанное</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>str</em>) – Имя пользователя</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if check_book_on_user<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для таблицы list_states</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>выполняется запрос insert для таблицы list_states</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_state.change_in_read">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_state.</span></span><span class="sig-name descname"><span class="pre">change_in_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_state.html#change_in_read"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_state.change_in_read" title="Link to this definition"></a></dt>
+<dd><p>Запрос для добавление/изменения книги на чтение</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>str</em>) – Имя пользователя</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if check_book_on_user<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для таблицы list_states</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>выполняется запрос insert для таблицы list_states</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.change_state.change_on_favorite">
+<span class="sig-prename descclassname"><span class="pre">blueprints.change_state.</span></span><span class="sig-name descname"><span class="pre">change_on_favorite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_book</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/change_state.html#change_on_favorite"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.change_state.change_on_favorite" title="Link to this definition"></a></dt>
+<dd><p>Запрос для добавление/изменения книги в избранное</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>str</em>) – Имя пользователя</p></li>
+<li><p><strong>id_book</strong> (<em>int</em>) – id книги</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Результаты выполнения условий:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if check_book_on_user<span class="colon">:</span></dt>
+<dd class="field-odd"><p>выполняется запрос update для таблицы list_states</p>
+</dd>
+<dt class="field-even">else<span class="colon">:</span></dt>
+<dd class="field-even"><p>выполняется запрос insert для таблицы list_states</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str: Возвращает пустую строку</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="function">
+<h2>Компонент function<a class="headerlink" href="#function" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент содержит вспомогательные функции.</div>
+</div>
+<dl class="py function" id="module-blueprints.function">
+<dt class="sig sig-object py" id="blueprints.function.check_book_on_user">
+<span class="sig-prename descclassname"><span class="pre">blueprints.function.</span></span><span class="sig-name descname"><span class="pre">check_book_on_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">books_by_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">book_in_check</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/blueprints/function.html#check_book_on_user"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.function.check_book_on_user" title="Link to this definition"></a></dt>
+<dd><p>Эта функция проверяет наличие книги у пользователя</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>books_by_user</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Список книг автора</p></li>
+<li><p><strong>book_in_check</strong> (<em>str</em>) – Книга сравниваемая с книгами пользователя</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Variable:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">param check (bool)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Переменная проверки книги, check = False, если книга имеется у пользователя check = True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool: True - книга имеется у пользователя, False - книга отсутствует у пользователя</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.function.formation_authors">
+<span class="sig-prename descclassname"><span class="pre">blueprints.function.</span></span><span class="sig-name descname"><span class="pre">formation_authors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_words</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/blueprints/function.html#formation_authors"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.function.formation_authors" title="Link to this definition"></a></dt>
+<dd><p>Эта функция формирует список авторов из списка слов ([Фамилия имя отчество] -&gt; [Фамилия, Имя, Отчество] )</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>list_words</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Список слов</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]: Список авторов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.function.formation_tags">
+<span class="sig-prename descclassname"><span class="pre">blueprints.function.</span></span><span class="sig-name descname"><span class="pre">formation_tags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_words</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/blueprints/function.html#formation_tags"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.function.formation_tags" title="Link to this definition"></a></dt>
+<dd><p>Эта функция формирует список тэгов из списка слов ([Тэг Тэг] -&gt; [Тэг, Тэг] )</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>list_words</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Список слов</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]: Список тэгов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.function.parser_html_ajax">
+<span class="sig-prename descclassname"><span class="pre">blueprints.function.</span></span><span class="sig-name descname"><span class="pre">parser_html_ajax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">findall</span></span></span><a class="reference internal" href="_modules/blueprints/function.html#parser_html_ajax"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.function.parser_html_ajax" title="Link to this definition"></a></dt>
+<dd><p>Эта функция парсинга данных принятых с ajax в виде html в список строк</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_container</strong> (<em>int</em>) – id контейнера данных html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Functions:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">function re.findall()<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>Регулярное выражение с правилом „(?&lt;=&gt;)[^&lt;&gt;]+(?=&lt;/)“, выбирающем текст внутри тегов html</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>re.findall: Список строк сформированный с помощью регулярных выражений</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.function.parser_list_in_list">
+<span class="sig-prename descclassname"><span class="pre">blueprints.function.</span></span><span class="sig-name descname"><span class="pre">parser_list_in_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_in_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/blueprints/function.html#parser_list_in_list"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.function.parser_list_in_list" title="Link to this definition"></a></dt>
+<dd><p>Эта функция уменьшат на один уровень вложенности списка
+:param list_in_list: Многоуровневый список(больше трех уровне)
+:type list_in_list: list[list[str]]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list [list[str]]: Список с уменьшенным количеством уровней и уникальными строками</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="search-filter">
+<h2>Компонент search_filter<a class="headerlink" href="#search-filter" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначени для формирования страниц найденных книг.</div>
+</div>
+<dl class="py function" id="module-blueprints.search_filter">
+<dt class="sig sig-object py" id="blueprints.search_filter.filter">
+<span class="sig-prename descclassname"><span class="pre">blueprints.search_filter.</span></span><span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/search_filter.html#filter"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.search_filter.filter" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает все найденные книжные издания по фильтру</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Переменные:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">year (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Заданный год</p>
+</dd>
+<dt class="field-even">tag (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Заданный тэг</p>
+</dd>
+<dt class="field-odd">language (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Заданный язык</p>
+</dd>
+</dl>
+</dd>
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewFilter)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных filter</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><p>:books.html : Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+<dl class="field-list simple">
+<dt class="field-odd">main.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом</p>
+</dd>
+<dt class="field-even">index.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий подоготовки фильтра (аналогично для двух других блоков условий):</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if page == 1<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FILTER_YEAR, FILTER_LANGUAGE и FILTER_TAG сбрасываются</p>
+</dd>
+<dt class="field-even">if [„FILTER_YEAR“] == None<span class="colon">:</span></dt>
+<dd class="field-even"><p>Присвоение переменной значения</p>
+</dd>
+<dt class="field-odd">elif („year“) and („year“) ! = [„FILTER_YEAR“]<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Присвоение переменной значения</p>
+</dd>
+</dl>
+</dd>
+<dt>Результаты выполнения условий фильтра:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">if year and language and tag<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами по трем критериям (год, язык и тэг)</p>
+</dd>
+<dt class="field-even">elif tag and year<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу с книгами по двум критериям (тэг и год)</p>
+</dd>
+<dt class="field-odd">elif tag and language<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами по двум критериям (тэг и язык)</p>
+</dd>
+<dt class="field-even">elif language and year<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу с книгами по двум критериям (язык и год)</p>
+</dd>
+<dt class="field-odd">elif tag<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами по одному критерию (тэг)</p>
+</dd>
+<dt class="field-even">elif language<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает страницу с книгами по одному критерию (язык)</p>
+</dd>
+<dt class="field-odd">elif year<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами по одному критерию (год)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.search_filter.search">
+<span class="sig-prename descclassname"><span class="pre">blueprints.search_filter.</span></span><span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/search_filter.html#search"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.search_filter.search" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает все найденные книжные издания</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewSearch)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных search</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="select-books">
+<h2>Компонент select_books<a class="headerlink" href="#select-books" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначени для формирования страниц книг с различными категориями («Книги», «Журналы», «Статьи»).</div>
+</div>
+<dl class="py function" id="module-blueprints.select_books">
+<dt class="sig sig-object py" id="blueprints.select_books.article">
+<span class="sig-prename descclassname"><span class="pre">blueprints.select_books.</span></span><span class="sig-name descname"><span class="pre">article</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/select_books.html#article"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.select_books.article" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает страницу со статьями</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewArticles)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных view_articles</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранной категорий</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.select_books.books">
+<span class="sig-prename descclassname"><span class="pre">blueprints.select_books.</span></span><span class="sig-name descname"><span class="pre">books</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/select_books.html#books"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.select_books.books" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает страницы с книгами</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewBooks)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных view_books</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранной категорий</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.select_books.joornal">
+<span class="sig-prename descclassname"><span class="pre">blueprints.select_books.</span></span><span class="sig-name descname"><span class="pre">joornal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/select_books.html#joornal"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.select_books.joornal" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает страницы журналов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewJoornals)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных view_joornals</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранной категорий</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="select-books-state">
+<h2>Компонент select_books_state<a class="headerlink" href="#select-books-state" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначени для формирования страниц книг с различными статусами («На чтении», «Избранное», «Прочитанное»).</div>
+</div>
+<dl class="py function" id="module-blueprints.select_books_state">
+<dt class="sig sig-object py" id="blueprints.select_books_state.end_read">
+<span class="sig-prename descclassname"><span class="pre">blueprints.select_books_state.</span></span><span class="sig-name descname"><span class="pre">end_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/select_books_state.html#end_read"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.select_books_state.end_read" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает все категории книжных изданий со статустом «Прочитанное»</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewEndRead)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных view_end_read</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Страница html</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>render_template</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.select_books_state.favorites">
+<span class="sig-prename descclassname"><span class="pre">blueprints.select_books_state.</span></span><span class="sig-name descname"><span class="pre">favorites</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/select_books_state.html#favorites"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.select_books_state.favorites" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает все категории книжных изданий со статустом «Избранное»</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewFavorites)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных view_favorites</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.select_books_state.on_reading">
+<span class="sig-prename descclassname"><span class="pre">blueprints.select_books_state.</span></span><span class="sig-name descname"><span class="pre">on_reading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">render_template</span></span></span><a class="reference internal" href="_modules/blueprints/select_books_state.html#on_reading"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.select_books_state.on_reading" title="Link to this definition"></a></dt>
+<dd><p>Эта функция возвращает все категории книжных изданий со статустом «На чтении»</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>login</strong> (<em>string</em>) – Имя пользователя</p></li>
+<li><p><strong>page</strong> (<em>int</em>) – Страница</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Параметры для render_template:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books (ViewInRead)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель представления базы данных view_in_read</p>
+</dd>
+<dt class="field-even">page (int)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Страница на которой находится пользователь (по умолчанию 1)</p>
+</dd>
+<dt class="field-odd">login (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Логин пользователя</p>
+</dd>
+<dt class="field-even">style (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Стиль приложения</p>
+</dd>
+<dt class="field-odd">tags (Tag)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных tag</p>
+</dd>
+<dt class="field-even">authors (str)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных authors</p>
+</dd>
+<dt class="field-odd">language (Language)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Модель таблицы базы данных language</p>
+</dd>
+<dt class="field-even">year (Year)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных year</p>
+</dd>
+<dt class="field-odd">category (str)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Категория книг, необходимая для формирования перехода между страницами</p>
+</dd>
+<dt class="field-even">state (State)<span class="colon">:</span></dt>
+<dd class="field-even"><p>Модель таблицы базы данных state</p>
+</dd>
+<dt class="field-odd">id_user (int)<span class="colon">:</span></dt>
+<dd class="field-odd"><p>id пользователя</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>render_template: Страница html</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Возвращаемые html страницы:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">books.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу с книгами если сессия работы с библиотекой  не завершена</p>
+</dd>
+<dt class="field-even">main.html<span class="colon">:</span></dt>
+<dd class="field-even"><p>Возвращает главную страницу если у пользователя отсутствуют книги с выбранным статусом</p>
+</dd>
+<dt class="field-odd">index.html<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Возвращает страницу авторизации если сессия работы с библиотекой прервана</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="style">
+<h2>Компонент style<a class="headerlink" href="#style" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Компонент предназначени для изменения стиля сайта.</div>
+</div>
+<dl class="py function" id="module-blueprints.style">
+<dt class="sig sig-object py" id="blueprints.style.style1">
+<span class="sig-prename descclassname"><span class="pre">blueprints.style.</span></span><span class="sig-name descname"><span class="pre">style1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/style.html#style1"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.style.style1" title="Link to this definition"></a></dt>
+<dd><p>Эта функция меняет стиль страницы</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Изменение стиля</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.style.style2">
+<span class="sig-prename descclassname"><span class="pre">blueprints.style.</span></span><span class="sig-name descname"><span class="pre">style2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/style.html#style2"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.style.style2" title="Link to this definition"></a></dt>
+<dd><p>Эта функция меняет стиль страницы</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Изменение стиля</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.style.style3">
+<span class="sig-prename descclassname"><span class="pre">blueprints.style.</span></span><span class="sig-name descname"><span class="pre">style3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/style.html#style3"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.style.style3" title="Link to this definition"></a></dt>
+<dd><p>Эта функция меняет стиль страницы</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Изменение стиля</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.style.style4">
+<span class="sig-prename descclassname"><span class="pre">blueprints.style.</span></span><span class="sig-name descname"><span class="pre">style4</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/style.html#style4"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.style.style4" title="Link to this definition"></a></dt>
+<dd><p>Эта функция меняет стиль страницы</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Изменение стиля</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="blueprints.style.style5">
+<span class="sig-prename descclassname"><span class="pre">blueprints.style.</span></span><span class="sig-name descname"><span class="pre">style5</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/blueprints/style.html#style5"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#blueprints.style.style5" title="Link to this definition"></a></dt>
+<dd><p>Эта функция меняет стиль страницы</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Изменение стиля</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Книжная библиотека" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Бушуев Дмитрий. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

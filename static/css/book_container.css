@@ -1,0 +1,270 @@
+
+/** 
+* Контейнер со всеми книгами 
+*/
+.all_block_books{
+	position: absolute;
+	top:0px;
+	left:25px;
+}
+
+
+/** 
+* Блок с книгой 
+*/
+.books_block_inside{
+	position: absolute;
+	width: 1154px;
+	height: 422px;
+	left: 344px;
+	right: 25px;
+	top: 322px;
+}
+
+
+/**
+* Блок книги 1 уровня 
+*/
+.books_block{
+	width: 1154px;
+	height: 420px;
+	bottom: 336px;
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+	background: rgba(22, 22, 22, 0.45);
+}
+
+
+/** 
+* Блок описания книги
+*/
+.container_book_info{
+	position: fixed;
+	width: 570px; 
+	height: 310px; 
+	background: rgba(11, 11, 11, 0.45);
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(23, 22, 22, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5),185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+
+}
+
+
+/** 
+* Кнопка Открыть
+*/
+.button_container_books1{
+	position: relative;
+	left: 590px;
+	top: -58px;
+	width: 200px;
+	height: 60px;
+	font-size: 26px;
+}
+
+
+/** 
+* Кнопка Изменить
+*/
+.button_container_books2{
+	position: relative;
+	left: 590px;
+	top: -50px;
+	width: 200px;
+	height: 60px;
+	font-size: 26px;
+}
+
+
+/** 
+* Кнопка В избранное
+*/
+.button_container_books3{
+	position: relative;
+	left: 590px;
+	top: -42px;
+	width: 200px;
+	height: 60px;
+	font-size: 26px;
+}
+
+
+/** 
+* Кнопка На чтение
+*/
+.button_container_books4{
+	position: relative;
+	left: 590px;
+	top: -34px;
+	width: 200px;
+	height: 60px;
+	font-size: 26px;
+}
+
+
+/** 
+* Кнопка В прочитанное
+*/
+.button_container_books5{
+	position: relative;
+	left: 590px;
+	top: -26px;
+	width: 200px;
+	height: 60px;
+	font-size: 26px;
+}
+
+
+/** 
+* Описание книги
+*/
+.text_book{
+	white-space: pre-wrap; 
+	word-wrap: normal; 
+	overflow: auto; 
+	width: 570px; 
+	height:220px;
+	font-size: 24px;
+	color: white;
+	background-color: rgb(11, 11, 11);
+    box-shadow: 0px 0px 0px 0px rgb(0, 0, 0),11px 12px 37px 0px rgba(127, 107, 107, 0.98),46px 49px 67px 0px rgba(0, 0, 0, 0.85),12px 25px 22px 0px rgba(0, 0, 0, 0.5), 185px 195px 108px 0px rgba(0, 0, 0, 0.15),22px 22px 22px 0px rgba(0, 0, 0, 0.02);
+}
+
+
+/** 
+* Заголовок названия книги
+*/
+.label_title{
+	white-space: pre-nowrap; 
+	overflow-x:auto;
+	word-wrap: normal; 
+	position: relative;
+	color: rgb(255, 255, 255);
+	font-family: Inter;
+	font-size: 20px;
+	letter-spacing: 0px;
+	text-align: center;
+	font-variant: small-caps;
+	width: 570px; 
+	height: 43px; 
+	background-color: rgb(22, 22, 22); 
+	box-shadow: 0px 0px 69.36000061035156px rgba(236,65,14, 0.6);
+	line-height: 32px;
+
+}
+
+
+/** 
+* Заголовок имени автора
+*/
+.label_author{
+	white-space: nowrap; 
+	overflow-x:auto;
+	word-wrap: normal; 
+	position: relative;
+	color: rgb(255, 255, 255);
+	font-family: Inter;
+	font-size: 18px;
+	letter-spacing: 0px;
+	text-align: center;
+	font-variant: small-caps;
+	width: 375px; 
+	height: 50px; 
+	background-color: rgb(44, 44, 44); 
+	box-shadow: 0px 0px 69.36000061035156px rgba(236,65,14, 0.3);
+	line-height: 32px;
+	
+
+}
+
+
+/** 
+* Заголовок языка книги и года издания
+*/
+.label_year_language{
+	font-weight:bold ;
+	position: absolute;
+	left: 420px; 
+	top: 45px;
+	color: #fffcfc;
+}
+
+
+/** 
+* Заголовок категории книги 
+*/
+.label_category{
+	font-weight:bold ;
+	position: absolute;
+	left: 400px; 
+	top: 312px;
+	color: #fffcfc;
+}
+
+
+/** 
+* Заголовок статуска книги
+*/
+.label_state{
+	font-weight:bold ;
+	position: absolute;
+
+	top: 312px;
+	color: #fffcfc;
+}
+
+
+/** 
+* Контейнер блоков тэгов книги
+*/
+.tags_book{
+	white-space: pre-wrap; 
+	word-wrap: normal; 
+	overflow: auto; 
+	width: 570px; 
+	height:90px;
+	font-size: 24px;
+	color: black;
+	scrollbar-width: thin;
+	scrollbar-color: hsl(0 0% 50%);
+	background-color: 0px 0px 69.36000061035156px rgba(33,33,89, 1);
+	box-shadow: r;
+}
+
+
+/** 
+* Контейнер тэгов
+*/
+.tag_container{
+	width: auto;
+	height: 44px;
+	font-family: Inter;
+	font-size: 22px;
+	line-height: 41px;
+	white-space: nowrap; 
+	color: rgb(255, 255, 255);
+	text-align: center;
+	background-color: rgb(236, 65, 14); 
+	border-color: black; 
+	border-width: 1px; 
+	border-style: solid;
+    box-shadow: 0px 0px 69.36000061035156px rgba(22, 22, 22, 1);
+
+}
+
+
+/**
+* Дизайн скролла
+*/
+::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background: #3b280d53;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c2bab5;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(22, 20, 20, 0);
+}
+
+::-webkit-scrollbar-corner {
+    background: #000;
+}
